@@ -37,7 +37,10 @@ public class MainView extends JFrame {
 		//Se agrega boton para agregar persona nueva
 		agregarNuevaPersonaBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NuevaPersonaView agregarPersona = new NuevaPersonaView() {
+				NuevaPersonaView agregarPersona = new NuevaPersonaView() 
+				{
+					
+
 					@Override
 					public void dispose() {
 						getFrame().setVisible(true);
