@@ -16,30 +16,37 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
-//import View.VentanaSecundaria;
+import view.VerPersonasView;
 
-public class MainView {
-	private JFrame frame;
+public class MainView extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	
 	public MainView() {
 		inicializar();
 	}
 	
 	public void inicializar() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Abrir Ventana secundaria");
-		btnNewButton.addActionListener(new ActionListener() {
+		//Se establecen las caracteristicas de la ventana principal
+		this.setBounds(200, 50, 500, 600);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.getContentPane().setLayout(null);
+		
+		//Se agrega boton para ver las personas
+		JButton verPersonasBoton = new JButton("Ver Personas");
+		verPersonasBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//VentanaSecundaria ventana = new VentanaSecundaria();
-				//ventana.frame.setVisible(true);
+				VerPersonasView verPersonas = new VerPersonasView();
+				verPersonas.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(213, 193, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		verPersonasBoton.setBounds(213, 193, 89, 23);
+		this.getContentPane().add(verPersonasBoton);
+		this.setVisible(true);
 	}
 
 }
