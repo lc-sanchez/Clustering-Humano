@@ -37,22 +37,14 @@ public class MainView extends JFrame {
 		//Se agrega boton para agregar persona nueva
 		agregarNuevaPersonaBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				NuevaPersonaView agregarPersona = new NuevaPersonaView() 
-				{
-					
-=======
 				@SuppressWarnings("serial")
 				NuevaPersonaView agregarPersona = new NuevaPersonaView() {
->>>>>>> branch 'master' of https://gitlab.com/lCSanchez/clusteringhumano.git
-
 					@Override
 					public void dispose() {
 						getFrame().setVisible(true);
 						super.dispose();
 					}
-				};
-				
+				};				
 				agregarPersona.setVisible(true);
 				
 				dispose();

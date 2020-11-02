@@ -1,10 +1,5 @@
 package models;
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'master' of https://gitlab.com/lCSanchez/clusteringhumano.git
 public class Persona {
 	private String nombre;
 	private int deporte;
@@ -14,13 +9,12 @@ public class Persona {
 	
 	public Persona(String nombre, int deporte, int musica, int espectaculo, int ciencia){
 		setNombre(nombre);
-<<<<<<< HEAD
+
 		setDeporte(deporte);
 		setMusica(musica);
 		setEspectaculo(espectaculo);
 		setCiencia(ciencia);
-=======
->>>>>>> branch 'master' of https://gitlab.com/lCSanchez/clusteringhumano.git
+
 	}
 	
 	public int getDeporte() {return deporte;}
