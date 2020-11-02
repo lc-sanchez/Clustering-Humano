@@ -15,10 +15,6 @@ public class Persona {
 		intereses.add(espectaculo);
 		intereses.add(ciencia);
 	}
-
-	
-	
-	
 	
 	public String getNombre() {return nombre;}
 	public void setNombre(String nombre) {this.nombre = nombre;}

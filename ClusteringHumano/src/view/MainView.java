@@ -3,6 +3,7 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 public class MainView extends JFrame {
@@ -18,8 +19,9 @@ public class MainView extends JFrame {
 	
 	public void inicializar() {
 		//Se establecen las caracteristicas de la ventana principal
-		this.setBounds(200, 50, 250, 400);
+		this.setBounds(200, 150, 250, 400);
 		this.setTitle("Clustering Humano");
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
 		this.getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -35,9 +37,17 @@ public class MainView extends JFrame {
 		//Se agrega boton para agregar persona nueva
 		agregarNuevaPersonaBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NuevaPersonaView agregarPersona = new NuevaPersonaView();
+				NuevaPersonaView agregarPersona = new NuevaPersonaView() {
+					@Override
+					public void dispose() {
+						getFrame().setVisible(true);
+						super.dispose();
+					}
+				};
+				
 				agregarPersona.setVisible(true);
 				
+				dispose();
 			}
 		});
 		agregarNuevaPersonaBoton.setBounds(20, 50, 200, 50);
@@ -76,6 +86,10 @@ public class MainView extends JFrame {
 		
 		this.setVisible(true);
 					
+	}
+	
+	private JFrame getFrame(){
+	    return this;
 	}
 	
 	
