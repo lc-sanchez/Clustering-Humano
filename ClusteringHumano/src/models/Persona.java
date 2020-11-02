@@ -1,19 +1,14 @@
 package models;
 
-import java.util.ArrayList;
+import models.Interes;
 
 public class Persona {
-	private ArrayList<Integer> intereses;
+	private Interes[] intereses;
 	private String nombre;
 	
 	public Persona(String nombre, int deportes, int musica, int espectaculo, int ciencia){
 		setNombre(nombre);
 		
-		intereses = new ArrayList<Integer>();
-		intereses.add(deportes);
-		intereses.add(musica);
-		intereses.add(espectaculo);
-		intereses.add(ciencia);
 	}
 	
 	public String getNombre() {return nombre;}
