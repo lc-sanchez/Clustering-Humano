@@ -19,7 +19,7 @@ public class MainView extends JFrame {
 	
 	public void inicializar() {
 		//Se establecen las caracteristicas de la ventana principal
-		this.setBounds(200, 150, 250, 400);
+		this.setBounds(200, 50, 250, 400);
 		this.setTitle("Clustering Humano");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,7 +37,9 @@ public class MainView extends JFrame {
 		//Se agrega boton para agregar persona nueva
 		agregarNuevaPersonaBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("serial")
 				NuevaPersonaView agregarPersona = new NuevaPersonaView() {
+
 					@Override
 					public void dispose() {
 						getFrame().setVisible(true);
