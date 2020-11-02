@@ -18,40 +18,43 @@ public class MainView extends JFrame {
 	
 	public void inicializar() {
 		//Se establecen las caracteristicas de la ventana principal
-		this.setBounds(200, 50, 300, 500);
+		this.setBounds(200, 50, 250, 400);
+		this.setTitle("Clustering Humano");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
+		this.getContentPane().setBackground(Color.LIGHT_GRAY);
 		
 		//************** SE AGREGAN LOS BOTONES *********************************//
 		
-		//Se agrega boton para agregar persona nueva
+		//Creamos todos los botones
 		JButton agregarNuevaPersonaBoton = new JButton("Agregar nueva persona");
+		JButton verPersonasBoton = new JButton("Ver personas");
+		JButton verGruposBoton = new JButton("Ver grupos");
+		JButton armarGruposBoton = new JButton("Armar grupos");
+		
+		//Se agrega boton para agregar persona nueva
 		agregarNuevaPersonaBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				NuevaPersonaView agregarPersona = new NuevaPersonaView();
 				agregarPersona.setVisible(true);
 				
-				
 			}
 		});
-		agregarNuevaPersonaBoton.setBounds(50, 100, 200, 50);
+		agregarNuevaPersonaBoton.setBounds(20, 50, 200, 50);
 		this.getContentPane().add(agregarNuevaPersonaBoton);
 		
 		//Se agrega boton para ver las personas
-		JButton verPersonasBoton = new JButton("Ver personas");
 		verPersonasBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VerPersonasView verPersonas = new VerPersonasView();
 				verPersonas.setVisible(true);
-				
-				
+
 			}
 		});
-		verPersonasBoton.setBounds(50, 170, 200, 50);
+		verPersonasBoton.setBounds(20, 120, 200, 50);
 		this.getContentPane().add(verPersonasBoton);
 		
 		//Se agrega boton para ver los grupos
-		JButton verGruposBoton = new JButton("Ver grupos");
 		verGruposBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VerGruposView verGrupos = new VerGruposView();
@@ -59,22 +62,23 @@ public class MainView extends JFrame {
 				
 			}
 		});
-		verGruposBoton.setBounds(50, 240, 200, 50);
+		verGruposBoton.setBounds(20, 190, 200, 50);
 		this.getContentPane().add(verGruposBoton);
 		
 		//Se agrega boton para armar los grupos/correr el algoritmo
-		JButton armarGruposBoton = new JButton("Armar grupos");
 		armarGruposBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Aca se llamaria al algoritmo del camino minimo
-				
+				//Aca se llamaria al algoritmo del camino minimo			
 			}
 		});
-		armarGruposBoton.setBounds(50, 310, 200, 50);
+		armarGruposBoton.setBounds(20, 260, 200, 50);
 		this.getContentPane().add(armarGruposBoton);
 		
 		this.setVisible(true);
 					
 	}
+	
+	
+	
 
 }
