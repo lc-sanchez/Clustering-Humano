@@ -16,7 +16,16 @@ public class PersonaTest {
 	@Test 
 	public void equalsTest2() {
 		Persona p1= new Persona("Maria",2,3,4,5);
-		Persona p2= new Persona("Kia",2,3,4,5);
+		Persona p2= new Persona("Kia",1,2,3,4);
 		assertFalse(p1.equals(p2));
+	}
+	
+	@Test
+	public void calcularSimilaridadTest(){
+		Persona p1= new Persona("Maria",2,3,4,5);
+		Persona p2= new Persona("Kia",2,3,4,5);
+		Integer similaridad= p1.calcularSimilaridad(p2);
+		Integer esperado=0;
+		assertEquals(esperado,similaridad);
 	}
 }

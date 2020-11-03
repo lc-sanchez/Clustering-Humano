@@ -15,7 +15,7 @@ public class MainView extends JFrame {
 	
 	public MainView() {
 		inicializar();
-	}
+	} 
 	
 	public void inicializar() {
 		//Se establecen las caracteristicas de la ventana principal

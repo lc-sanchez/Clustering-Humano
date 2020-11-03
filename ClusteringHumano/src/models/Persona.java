@@ -13,7 +13,7 @@ public class Persona {
 		setDeporte(deporte);
 		setMusica(musica);
 		setEspectaculo(espectaculo);
-		setCiencia(ciencia);
+		setCiencia(ciencia); 
 
 	}
 	
@@ -35,7 +35,7 @@ public class Persona {
 		if (!(obj instanceof Persona))
 			return false;
 		Persona other = (Persona) obj;
-		if (ciencia != other.ciencia)
+		if (ciencia != other.ciencia) 
 			return false;
 		if (deporte != other.deporte)
 			return false;
