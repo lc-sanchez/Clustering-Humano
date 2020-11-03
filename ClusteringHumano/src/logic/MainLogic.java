@@ -1,8 +1,8 @@
 package logic;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+
 
 import models.Persona;
 
@@ -13,7 +13,7 @@ public class MainLogic {
 	//Las aristas son valores dados por el indice de similaritud
 	
 	private ArrayList<Persona> listaPersonas;
-	private ArrayList<Set<Persona>> grafoPersonas;
+	private ArrayList<HashMap<Persona,Integer>> grafoPersonas;
 	private int cantPersonas;
 	
 	public MainLogic() {
@@ -26,12 +26,21 @@ public class MainLogic {
 	}
 	
 	public void armarGrafoPersonas() {
-		grafoPersonas=new ArrayList<Set<Persona>>(cantPersonas);
+		//-------------> Persona -> Persona, similaridad/ Persona, similaridad
+		grafoPersonas=new ArrayList<HashMap<Persona,Integer>>(cantPersonas);
 		
 		for(int i=0;i<cantPersonas;i++) {
-			grafoPersonas.add(new HashSet<Persona>());
+			grafoPersonas.add(new HashMap<Persona,Integer>());
 		}
 	}
+	
+	public void agregarSimilaridad(Persona p1, Persona p2) {
+		for(int i=0;i<cantPersonas;i++) {
+
+		}
+		
+	}
+	
 	
 	
 	

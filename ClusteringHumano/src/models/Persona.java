@@ -17,6 +17,15 @@ public class Persona {
 
 	}
 	
+	public Integer calcularSimilaridad(Persona p2) {
+		Integer restaDeporte= Math.abs(this.getDeporte()-p2.getDeporte());
+		Integer restaMusica= Math.abs(this.getMusica()-p2.getMusica());
+		Integer restaEspectaculo= Math.abs(this.getEspectaculo()-p2.getEspectaculo());
+		Integer restaCiencia= Math.abs(this.getCiencia()-p2.getCiencia());
+		
+		return restaDeporte+restaMusica+restaEspectaculo+restaCiencia;
+	}
+	
 	public int getDeporte() {return deporte;}
 	public void setDeporte(int deporte) {this.deporte=deporte;}
 	
