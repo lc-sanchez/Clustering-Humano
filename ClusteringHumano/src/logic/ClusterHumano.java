@@ -8,33 +8,34 @@ import models.Persona;
 
 public class ClusterHumano {
 	
-	//Representacion del grafo por lista de vecinos
+	//Representacion del grafo por hashmaps de hashmaps 
 	//Los vertices son personas
 	//Las aristas son valores dados por el indice de similaritud
 	
 	private ArrayList<Persona> listaPersonas;
-	private HashMap<Persona,HashMap<Persona,Integer>> grafoPersonas;
+	public HashMap<Persona,HashMap<Persona,Integer>> clusterHumano;
 	private int cantPersonas;
 	
-	public ClusterHumano() {
+	public ClusterHumano() { 
 		listaPersonas=new ArrayList<Persona>();
 	}
 	
 	public void agregarPersona(Persona persona) {
 		listaPersonas.add(persona);
 		cantPersonas++;
+		armarCluster();
 	}
 	
 	public int cantPersonas() {
-		return cantPersonas;
+		return cantPersonas; 
 	}
 	
-	public void armarGrafoPersonas() {
+	public void armarCluster() {
 		//-------> Persona,vecinos -> Persona, similaridad/ Persona, similaridad
-		grafoPersonas=new HashMap<Persona,HashMap<Persona,Integer>>(cantPersonas);	
+		clusterHumano=new HashMap<Persona,HashMap<Persona,Integer>>(cantPersonas);	
 		for(int i=0;i<cantPersonas;i++) {
 			Persona p= listaPersonas.get(i);
-			grafoPersonas.put(p,agregarVecinos(p)); 
+			clusterHumano.put(p,agregarVecinos(p)); 
 		}
 	}
 	

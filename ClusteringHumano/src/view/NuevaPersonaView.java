@@ -82,7 +82,7 @@ public class NuevaPersonaView extends JFrame{
 		
 		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("4");
 		buttonGroup.add(rdbtnNewRadioButton_3);
-		rdbtnNewRadioButton_3.setBounds(216, 100, 38, 23);
+		rdbtnNewRadioButton_3.setBounds(216, 100, 38, 23); 
 		this.getContentPane().add(rdbtnNewRadioButton_3);
 		
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("5");
