@@ -26,6 +26,31 @@ public class Persona {
 		return restaDeporte+restaMusica+restaEspectaculo+restaCiencia;
 	}
 	
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Persona))
+			return false;
+		Persona other = (Persona) obj;
+		if (ciencia != other.ciencia)
+			return false;
+		if (deporte != other.deporte)
+			return false;
+		if (espectaculo != other.espectaculo)
+			return false;
+		if (musica != other.musica)
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		return true;
+	}
+
 	public int getDeporte() {return deporte;}
 	public void setDeporte(int deporte) {this.deporte=deporte;}
 	

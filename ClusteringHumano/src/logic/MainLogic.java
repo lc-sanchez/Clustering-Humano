@@ -13,7 +13,7 @@ public class MainLogic {
 	//Las aristas son valores dados por el indice de similaritud
 	
 	private ArrayList<Persona> listaPersonas;
-	private ArrayList<HashMap<Persona,Integer>> grafoPersonas;
+	private HashMap<Persona,HashMap<Persona,Integer>> grafoPersonas;
 	private int cantPersonas;
 	
 	public MainLogic() {
@@ -26,21 +26,27 @@ public class MainLogic {
 	}
 	
 	public void armarGrafoPersonas() {
-		//-------------> Persona -> Persona, similaridad/ Persona, similaridad
-		grafoPersonas=new ArrayList<HashMap<Persona,Integer>>(cantPersonas);
+		//-------------> Persona,vecinos -> Persona, similaridad/ Persona, similaridad
+		grafoPersonas=new HashMap<Persona,HashMap<Persona,Integer>>(cantPersonas);
 		
 		for(int i=0;i<cantPersonas;i++) {
-			grafoPersonas.add(new HashMap<Persona,Integer>());
+			Persona p= listaPersonas.get(i);
+			grafoPersonas.put(p,agregarVecinos(p));
 		}
 	}
 	
-	public void agregarSimilaridad(Persona p1, Persona p2) {
-		for(int i=0;i<cantPersonas;i++) {
-
-		}
-		
-	}
 	
+	
+	public HashMap<Persona,Integer> agregarVecinos(Persona p) {
+		HashMap<Persona,Integer> vecinos=new HashMap<Persona,Integer>();
+		for(int i=0;i<cantPersonas;i++) {
+			Persona vecino= listaPersonas.get(i);
+			if(!vecino.equals(p)) {
+				vecinos.put(vecino,p.calcularSimilaridad(vecino));
+			}
+		}
+		return vecinos;
+	}
 	
 	
 	

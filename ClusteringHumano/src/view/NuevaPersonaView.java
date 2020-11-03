@@ -23,6 +23,7 @@ public class NuevaPersonaView extends JFrame{
 	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_3 = new ButtonGroup();
 	
+	
 	public NuevaPersonaView() {
 		//Se establecen las caracteristicas de la ventana agregarPersona
 		this.setBounds(500, 50, 500, 600);
@@ -175,5 +176,6 @@ public class NuevaPersonaView extends JFrame{
 			}
 		});
 	}
+	
 
 }
