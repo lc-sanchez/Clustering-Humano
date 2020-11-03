@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import models.Persona;
 
-public class MainLogic {
+public class ClusterHumano {
 	
 	//Representacion del grafo por lista de vecinos
 	//Los vertices son personas
@@ -16,7 +16,7 @@ public class MainLogic {
 	private HashMap<Persona,HashMap<Persona,Integer>> grafoPersonas;
 	private int cantPersonas;
 	
-	public MainLogic() {
+	public ClusterHumano() {
 		listaPersonas=new ArrayList<Persona>();
 	}
 	

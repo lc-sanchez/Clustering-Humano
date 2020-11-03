@@ -6,17 +6,17 @@ import static org.junit.Assert.*;
 
 
 import org.junit.Test;
-import logic.MainLogic;
+import logic.ClusterHumano;
 import models.Persona;
 
-public class MainLogicTest {
+public class ClusterHumanoTest {
 	 
 	
 	@Test
 	public void agregarPersonaTest() {
 		//Setup
 		Persona p1= new Persona("Maria",1,2,3,4);
-		MainLogic mainLogic= new MainLogic();
+		ClusterHumano mainLogic= new ClusterHumano();
 		
 		mainLogic.agregarPersona(p1);//Execute
 		assertEquals(1,mainLogic.cantPersonas());
