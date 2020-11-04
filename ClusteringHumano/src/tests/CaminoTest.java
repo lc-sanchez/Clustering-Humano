@@ -23,7 +23,7 @@ public class CaminoTest {
 		Persona p2= new Persona("Juan",2,3,4,5);
 		Persona p3= new Persona("Mia",1,1,1,1);
 		
-		camino1= new Camino(p1,p3);
+		camino1= new Camino(p1,p3); 
 		camino2= new Camino(p3,p2);
 		camino3= new Camino(p3,p1);
 		caminos = new ArrayList<Camino>();

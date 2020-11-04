@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class GrafoDePersonas {
 	private ArrayList<Persona> personas;
-	private ArrayList<Camino> caminos;
+	private ArrayList<Camino> caminos; //Los caminos no tienen simetricos
 	private int cantVertices;
-	private int cantAristas;
+	private int cantCaminos;
 	
 	public GrafoDePersonas(ArrayList<Persona> vertices){
 		if(vertices.equals(null)) { 
@@ -25,19 +25,21 @@ public class GrafoDePersonas {
 				Camino camino=new Camino(personas.get(i),personas.get(j));
 				if(i!=j && !existeEseCamino(camino)) {
 					caminos.add(camino);
-					cantAristas++;
+					cantCaminos++;
 				}
 			}
 		}
 	}
 	
-	private boolean existeEseCamino(Camino camino) {
-		for(int i=0;i<cantAristas;i++) {
+	private boolean existeEseCamino(Camino camino) { 
+		for(int i=0;i<cantCaminos;i++) {
 			//Comparar si son los mismos vertices en el camino
+			
 			if(caminos.get(i).getPersona1().equals(camino.getPersona1())
 			&& 	caminos.get(i).getPersona2().equals(camino.getPersona2())) {
 				return true;
 			}
+			//Sirve para verificar que no se guarde el simetrico
 			if(caminos.get(i).getPersona1().equals(camino.getPersona2())
 			&& caminos.get(i).getPersona2().equals(camino.getPersona1())) {
 				return true;
@@ -56,7 +58,7 @@ public class GrafoDePersonas {
 	}
 	
 	private int getCantCaminos() {
-		return this.cantAristas;
+		return this.cantCaminos;
 	}
 	private int getCantVertices() {
 		return this.cantVertices;

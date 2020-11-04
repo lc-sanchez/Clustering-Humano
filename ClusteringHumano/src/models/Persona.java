@@ -97,7 +97,7 @@ public class Persona {
 		if(nombre==null) {
 			throw new RuntimeException("Nombre no null");
 		}
-		this.nombre = nombre;
+		this.nombre = nombre; 
 	}
 	
 }
