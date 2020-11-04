@@ -35,6 +35,13 @@ public class AlgoritmoDePrim {
 	//cluster-> p1, p2, p3 -> PersonaInicio=1-> vecinos= {(p2,4),(p3,5)} 
 	public void agregarAristaMasPequeña(Persona persona) {
 		HashMap<Persona,Integer> vecinos=cluster.getVecinosDe(persona);//-> vecinos= {(p2,4),(p3,5)} 
+		ArrayList<Integer> similaridades=cluster.obtenerSimilaridadConVecinos(persona);
+		//->{4,5}
+		int contador=1;
+		Integer min=similaridades.get(0);
+		for(Persona p: vecinos.keySet()) {
+			//
+		}
 		
 	}
 	

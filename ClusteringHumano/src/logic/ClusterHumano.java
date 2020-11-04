@@ -30,7 +30,10 @@ public class ClusterHumano {
 		return cantPersonas; 
 	}
 	
+	
 	public ArrayList<Persona> getPersonas(){return this.listaPersonas;}
+	
+	
 	
 	public void armarCluster() {
 		//-------> Persona,vecinos -> Persona, similaridad/ Persona, similaridad
@@ -52,6 +55,14 @@ public class ClusterHumano {
 		return vecinos;
 	}
 	
-	
+	public ArrayList<Integer> obtenerSimilaridadConVecinos(Persona p){
+		ArrayList<Integer> similaridadConVecinos= new ArrayList<Integer>();
+		HashMap<Persona,Integer> vecinos=getVecinosDe(p);
+		
+		for(Integer similaridad : vecinos.values()) {
+			similaridadConVecinos.add(similaridad);
+		}
+		return similaridadConVecinos;
+	}
 	
 }
