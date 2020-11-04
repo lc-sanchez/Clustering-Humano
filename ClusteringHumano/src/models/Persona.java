@@ -1,6 +1,6 @@
 package models;
 
-import javax.management.RuntimeErrorException;
+
 
 public class Persona {
 	private String nombre;
@@ -12,7 +12,7 @@ public class Persona {
 	public Persona(String nombre, int deporte, int musica, int espectaculo, int ciencia){
 		setNombre(nombre);
 
-		setDeporte(deporte);
+		setDeporte(deporte); 
 		setMusica(musica);
 		setEspectaculo(espectaculo);
 		setCiencia(ciencia); 
@@ -52,19 +52,46 @@ public class Persona {
 			return false;
 		return true;
 	}
+	//----------------------------Getters y Setters--------
+	//Evaluar test para casos bordes-> valores menores a 0 y mayores a 5
 	
-	//Evaluar test para casos bordes-> valores menos a 0 y mayores a 5
+	private boolean valorPermitido(int interes) {
+		if(interes>=0 && interes<=5) {
+			return true;
+		}
+		return false;
+	}
+	
 	public int getDeporte() {return deporte;}
-	public void setDeporte(int deporte) {this.deporte=deporte;}
+	public void setDeporte(int deporte) {
+		if(!valorPermitido(deporte)) {
+			throw new RuntimeException("Valor no permitido");
+		}
+		else {this.deporte=deporte;}
+	}
 	
 	public int getMusica() {return musica;}
-	public void setMusica(int musica) {this.musica=musica;}
+	public void setMusica(int musica) {
+		if(!valorPermitido(musica)) {
+			throw new RuntimeException("Valor no permitido");
+		}
+		else {this.musica=musica;}
+		
+	}
 	
 	public int getEspectaculo() {return espectaculo;}
-	public void setEspectaculo(int espectaculo) {this.espectaculo=espectaculo;}
+	public void setEspectaculo(int espectaculo) {
+		if(!valorPermitido(espectaculo)) {
+			throw new RuntimeException("Valor no permitido");
+		}else {this.espectaculo=espectaculo;}
+	}
 	
 	public int getCiencia() {return this.ciencia;}
-	public void setCiencia(int ciencia) {this.ciencia=ciencia;}
+	public void setCiencia(int ciencia) {
+		if(!valorPermitido(ciencia)) {
+			throw new RuntimeException("Valor no permitido");
+		}else {this.ciencia=ciencia;}
+	}
 
 	
 	public String getNombre() {return nombre;}

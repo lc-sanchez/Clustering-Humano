@@ -25,6 +25,12 @@ public class PersonaTest {
 		Persona p1= new Persona(null,2,3,4,5);
 	}
 	
+	@Test(expected=RuntimeException.class)
+	public void setInteresesTest() {
+		Persona p1= new Persona("Maria",-1,-2,6,8);
+	}
+	
+	
 	@Test
 	public void calcularSimilaridadTest(){
 		Persona p1= new Persona("Maria",2,3,4,5);
