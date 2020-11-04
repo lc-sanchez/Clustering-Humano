@@ -18,7 +18,7 @@ public class GrafoDePersonasTest {
 	GrafoDePersonas grafo;
 	ArrayList<Persona> personas;
 	
-	@Before
+	@Before 
 	public void inicializar(){
 		personas = new ArrayList<Persona>();
 		personas.add(new Persona("Maria",1,1,1,1));
@@ -34,7 +34,7 @@ public class GrafoDePersonasTest {
 		Persona p2= new Persona("Juan",2,2,2,2);
 		Persona p3= new Persona("Kia",1,1,1,1);
 		
-		copia.add(new Camino(p1,p2));
+		copia.add(new Camino(p1,p2)); 
 		copia.add(new Camino(p1,p3));
 		copia.add(new Camino(p2,p3));
 		
@@ -47,6 +47,7 @@ public class GrafoDePersonasTest {
 		}
 		assertEquals(true,sonIguales);	
 	}
+	
 	
 	
 }

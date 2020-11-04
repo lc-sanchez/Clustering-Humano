@@ -8,14 +8,21 @@ import models.Persona;
 
 
 
-public class AlgoritmoDePrim {
+public class ArbolGeneradorMinimo {
 	
+	//Se utiliza el Algoritmo de Prim para generar el arbol minimo
 	private static ArrayList<Persona> personas;
 	private static ArrayList<Camino> caminos;
 	
-	public AlgoritmoDePrim(GrafoDePersonas g) {
+	//private static ArrayList<Persona> personasMinimas;
+	private static ArrayList<Camino> caminosMinimos;
+	
+	
+	public ArbolGeneradorMinimo(GrafoDePersonas g) {
 		personas=g.getPersonas();
 		caminos=g.getCaminos();
+		caminosMinimos=generarArbolMinimo();
+		
 	}
 	
 	public ArrayList<Camino> generarArbolMinimo(){
@@ -86,6 +93,22 @@ public class AlgoritmoDePrim {
 		return personas;
 	}
 	public ArrayList<Camino> getCaminos(){
-		return caminos;
+		return caminosMinimos;
 	}
+	
+
+//	public static void main(String[] args) {
+//		ArrayList<Persona> personas= new ArrayList<Persona>();
+//		personas.add(new Persona("Maria",2,3,5,1));
+//		personas.add(new Persona("Juan",2,2,3,4));
+//		personas.add(new Persona("Kia",3,4,2,3));
+//		personas.add(new Persona("Lian",1,1,1,1));
+//		GrafoDePersonas g= new GrafoDePersonas(personas);
+//		ArbolGeneradorMinimo a= new ArbolGeneradorMinimo(g);
+//		System.out.println("GRAFO->"+ g.getCaminos());
+//		System.out.println("--------------------------------------");
+//		System.out.println("PERSONAS en el AGM->"+ a.getPersonas());
+//		System.out.println("AGM-> "+a.getCaminos());
+//	}
+	
 }

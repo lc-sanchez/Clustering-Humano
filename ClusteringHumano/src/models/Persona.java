@@ -51,8 +51,18 @@ public class Persona {
 			return false;
 		return true;
 	}
+	
+	
+	
+	
 	//----------------------------Getters y Setters--------
 	
+	
+	@Override
+	public String toString() {
+		return ""+ nombre+"";
+	}
+
 	private boolean valorPermitido(int interes) {
 		if(interes>=0 && interes<=5) {
 			return true;

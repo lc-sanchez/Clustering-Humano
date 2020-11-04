@@ -41,8 +41,14 @@ public class Camino {
 	}
 	
 	
+	
 	//-------------Getters y Setters----------
 	
+	@Override
+	public String toString() {
+		return "["+persona1+","+ persona2+",similaridad="+similaridad+"]";
+	}
+
 	public int getSimilaridad() {return this.similaridad;}
 	
 	public Persona getPersona1() {return this.persona1;}

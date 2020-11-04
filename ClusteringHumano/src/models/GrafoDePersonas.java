@@ -10,13 +10,13 @@ public class GrafoDePersonas {
 	private int cantCaminos;
 	
 	public GrafoDePersonas(ArrayList<Persona> vertices){
-		if(vertices.equals(null)) { 
+		if(vertices.equals(null)) {  
 			throw new IllegalArgumentException("Array vacio.");
 		}
 		this.personas=vertices;
 		cantVertices=personas.size();
 		caminos=new ArrayList<Camino>();
-		crearCaminos();
+		crearCaminos(); 
 	}
 	
 	private void crearCaminos() {
@@ -63,5 +63,6 @@ public class GrafoDePersonas {
 	private int getCantVertices() {
 		return this.cantVertices;
 	}
+	
 	
 }
