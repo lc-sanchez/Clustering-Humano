@@ -10,7 +10,7 @@ public class Grafo {
 	private int cantAristas;
 	
 	Grafo(ArrayList<Persona> vertices){
-		if(vertices.equals(null)) {
+		if(vertices.equals(null)) { 
 			throw new IllegalArgumentException("Array vacio.");
 		}
 		this.personas=vertices;

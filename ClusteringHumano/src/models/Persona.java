@@ -52,7 +52,6 @@ public class Persona {
 		return true;
 	}
 	//----------------------------Getters y Setters--------
-	//Evaluar test para casos bordes-> valores menores a 0 y mayores a 5
 	
 	private boolean valorPermitido(int interes) {
 		if(interes>=0 && interes<=5) {

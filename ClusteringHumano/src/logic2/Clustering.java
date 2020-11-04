@@ -3,10 +3,12 @@ package logic2;
 import java.util.ArrayList;
 
 import models.Persona;
+import models.Camino;
 
 public class Clustering {
 	//Clase que interacciona con la view
 	private ArrayList<Persona> listaPersonas;
+	private static ArrayList<Camino> arbolGeneradorMinimo;
 	private int cantPersonas;
 	
 	public Clustering() {
