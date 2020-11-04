@@ -3,13 +3,13 @@ package models;
 import java.util.ArrayList;
 
 
-public class Grafo {
+public class GrafoDePersonas {
 	private ArrayList<Persona> personas;
 	private ArrayList<Camino> caminos;
 	private int cantVertices;
 	private int cantAristas;
 	
-	Grafo(ArrayList<Persona> vertices){
+	public GrafoDePersonas(ArrayList<Persona> vertices){
 		if(vertices.equals(null)) { 
 			throw new IllegalArgumentException("Array vacio.");
 		}
@@ -46,12 +46,13 @@ public class Grafo {
 		return false;
 	}
 	
-	public ArrayList<Persona> getVertices(){
+	//------------------------------Getters y Setters-----------------------------------------
+	public ArrayList<Persona> getPersonas(){
 		return this.personas;
 	}
 	
-	public ArrayList<Camino> getAristas(){
-		return this.caminos;
+	public ArrayList<Camino> getCaminos(){
+		return this.caminos; 
 	}
 	
 	private int getCantCaminos() {
