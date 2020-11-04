@@ -1,5 +1,7 @@
 package models;
 
+import javax.management.RuntimeErrorException;
+
 public class Persona {
 	private String nombre;
 	private int deporte;
@@ -22,7 +24,7 @@ public class Persona {
 		Integer restaMusica= Math.abs(this.getMusica()-p2.getMusica());
 		Integer restaEspectaculo= Math.abs(this.getEspectaculo()-p2.getEspectaculo());
 		Integer restaCiencia= Math.abs(this.getCiencia()-p2.getCiencia());
-		
+ 		
 		return restaDeporte+restaMusica+restaEspectaculo+restaCiencia;
 	}
 	
@@ -30,8 +32,8 @@ public class Persona {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
+		//if (this == obj)
+			//return true;
 		if (!(obj instanceof Persona))
 			return false;
 		Persona other = (Persona) obj;
@@ -50,7 +52,8 @@ public class Persona {
 			return false;
 		return true;
 	}
-
+	
+	//Evaluar test para casos bordes-> valores menos a 0 y mayores a 5
 	public int getDeporte() {return deporte;}
 	public void setDeporte(int deporte) {this.deporte=deporte;}
 	
@@ -65,6 +68,11 @@ public class Persona {
 
 	
 	public String getNombre() {return nombre;}
-	public void setNombre(String nombre) {this.nombre = nombre;}
+	public void setNombre(String nombre) {
+		if(nombre==null) {
+			throw new RuntimeException("Nombre no null");
+		}
+		this.nombre = nombre;
+	}
 	
 }

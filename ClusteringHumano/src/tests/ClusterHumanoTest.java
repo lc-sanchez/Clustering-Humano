@@ -35,7 +35,7 @@ public class ClusterHumanoTest {
 		cluster.agregarPersona(p1);
 		cluster.agregarPersona(p2);
 			
-		HashMap<Persona,Integer> obtenido=cluster.agregarVecinos(p1);
+		HashMap<Persona,Integer> obtenido=cluster.getVecinosDe(p1);
 		//Verify
 		assertTrue(obtenido.containsKey(p2));	
 	}
@@ -53,7 +53,7 @@ public class ClusterHumanoTest {
 		cluster.agregarPersona(p2);
 		
 		cluster.armarCluster();
-		HashMap<Persona,Integer> esperado= cluster.agregarVecinos(p1);
+		HashMap<Persona,Integer> esperado= cluster.getVecinosDe(p1);
 		
 		assertEquals(esperado,cluster.clusterHumano.get(p1));
 		

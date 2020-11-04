@@ -30,16 +30,18 @@ public class ClusterHumano {
 		return cantPersonas; 
 	}
 	
+	public ArrayList<Persona> getPersonas(){return this.listaPersonas;}
+	
 	public void armarCluster() {
 		//-------> Persona,vecinos -> Persona, similaridad/ Persona, similaridad
 		clusterHumano=new HashMap<Persona,HashMap<Persona,Integer>>(cantPersonas);	
 		for(int i=0;i<cantPersonas;i++) {
 			Persona p= listaPersonas.get(i);
-			clusterHumano.put(p,agregarVecinos(p)); 
+			clusterHumano.put(p,getVecinosDe(p)); 
 		}
 	}
 	
-	public HashMap<Persona,Integer> agregarVecinos(Persona p) {
+	public HashMap<Persona,Integer> getVecinosDe(Persona p) {
 		HashMap<Persona,Integer> vecinos=new HashMap<Persona,Integer>();
 		for(int i=0;i<cantPersonas;i++) {
 			Persona vecino= listaPersonas.get(i);

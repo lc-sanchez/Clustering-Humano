@@ -20,6 +20,11 @@ public class PersonaTest {
 		assertFalse(p1.equals(p2));
 	}
 	
+	@Test (expected=RuntimeException.class)
+	public void setNombreTest() {
+		Persona p1= new Persona(null,2,3,4,5);
+	}
+	
 	@Test
 	public void calcularSimilaridadTest(){
 		Persona p1= new Persona("Maria",2,3,4,5);
