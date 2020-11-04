@@ -11,7 +11,6 @@ public class Persona {
 	
 	public Persona(String nombre, int deporte, int musica, int espectaculo, int ciencia){
 		setNombre(nombre);
-
 		setDeporte(deporte); 
 		setMusica(musica);
 		setEspectaculo(espectaculo);
