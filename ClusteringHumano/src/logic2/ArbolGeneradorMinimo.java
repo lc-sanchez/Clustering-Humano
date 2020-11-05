@@ -105,21 +105,5 @@ public class ArbolGeneradorMinimo {
 		return caminosMinimos;
 	}
 	
-
-	public static void main(String[] args) {
-		ArrayList<Persona> personas= new ArrayList<Persona>();
-		personas.add(new Persona("Maria",2,3,5,1));
-		personas.add(new Persona("Juan",2,2,3,4));
-		personas.add(new Persona("Kia",3,4,2,3));
-		personas.add(new Persona("Lian",1,1,1,1));
-		personas.add(new Persona("Lila",2,3,5,4));
-		personas.add(new Persona("Rei",3,3,3,3));
-		GrafoDePersonas g= new GrafoDePersonas(personas);
-		ArbolGeneradorMinimo a1= new ArbolGeneradorMinimo(g);
-		System.out.println("GRAFO->"+ g.getCaminos());
-		System.out.println("-------------------------------------------------------------------------");
-		System.out.println("PERSONAS en el AGM->"+ a1.getPersonas());
-		System.out.println("AGM-> "+a1.getCaminos());
-	}
 	
 }

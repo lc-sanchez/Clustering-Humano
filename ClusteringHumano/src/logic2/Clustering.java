@@ -8,9 +8,8 @@ import models.GrafoDePersonas;
 
 public class Clustering {
 	//Clase que interacciona con la view
-	private ArrayList<Persona> listaPersonas;
-	private static ArrayList<Camino> arbolGeneradorMinimo;
-	private static ArbolGeneradorMinimo arbolGeneradorMinimo2;
+	private ArrayList<Persona> listaPersonas;	
+	
 	private int cantPersonas;
 	private Camino caminoMasPesado;
 	
@@ -69,7 +68,7 @@ public class Clustering {
 		
 		System.out.println("-------------------------------");
 		System.out.println("GRUPO1------------------------");
-		engrupar2(arbolMinimo);
+		engrupar(arbolMinimo);
 		System.out.println(caminosGrupo1);
 		System.out.println(grupoPersonas1);
 		System.out.println("-------------------------------");
@@ -79,7 +78,7 @@ public class Clustering {
 		
 	}
 	
-	public void engrupar2(ArbolGeneradorMinimo arbolMinimo) {
+	public void engrupar(ArbolGeneradorMinimo arbolMinimo) {
 		//Setup
 		ArrayList<Camino> caminosArbolMinimo=arbolMinimo.getCaminos();
 		ArrayList<Camino> caminosDisponibles= new ArrayList<Camino>(); 
@@ -104,47 +103,6 @@ public class Clustering {
 		
 	}
 	
-	public  void engrupar(ArrayList<Camino> arbolMinimo) {
-		int contador=0;
-		Camino camino=arbolMinimo.get(0); //Empezamos del primer camino
-		int cantCaminos=arbolMinimo.size();
-		
-//		for(int i=0;i<cantCaminos;i++) {
-//			if(!arbolMinimo.get(i).equalsDeCaminos(caminoMasPesado)) {
-//				agregarCamino(arbolMinimo.get(i),caminosGrupo1,caminosGrupo2);
-//				agregarPersonas(arbolMinimo.get(i),grupoPersonas1,grupoPersonas2);
-//				break;
-//			}	
-//		}
-//
-//		for(int i=0;i<cantCaminos;i++) {
-//			Camino camino=arbolMinimo.get(i);
-//			agregarCamino(camino,caminosGrupo2,caminosGrupo1);
-//			agregarPersonas(camino,grupoPersonas2,grupoPersonas1);
-//			eliminarCaminoMasPesado(caminosGrupo2);
-//			
-//			}	
-//		}
-//			
-		
-		while(!camino.equalsDeCaminos(caminoMasPesado) && contador<cantCaminos){
-			System.out.println(camino);
-			caminosGrupo1.add(camino);	
-			agregarPersonas(camino,grupoPersonas1,grupoPersonas2);
-			contador++;
-			camino=arbolMinimo.get(contador);
-		}
-		
-		caminosGrupo2=arbolMinimo;
-		contador=0;
-		while(contador<arbolMinimo.size()) {
-			camino=arbolMinimo.get(contador);
-			agregarPersonas(camino,grupoPersonas2,grupoPersonas1);
-			contador++;
-			
-		}
-		//eliminarCaminoMasPesado(caminosGrupo2);
-	}	
 
 	public void agregarCamino(Camino camino, ArrayList<Camino> grupoParaAgregar, ArrayList<Camino> grupoParaComparar) {
 		//Para verificar que no esten en otro grupo
