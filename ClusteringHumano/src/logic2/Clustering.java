@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import models.Persona;
 import models.Camino;
+import models.GrafoDePersonas;
 
 public class Clustering {
 	//Clase que interacciona con la view
@@ -16,10 +17,19 @@ public class Clustering {
 	}
 	
 	public void agregarPersona(Persona persona) {
+		//Para el boton de formulario
 		listaPersonas.add(persona);
 		cantPersonas++;
 		//armarCluster();
 	}
+	
+	public void ejecutarClustering() {
+		GrafoDePersonas grafo= new GrafoDePersonas(listaPersonas);
+		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
+		arbolGeneradorMinimo=arbolMinimo.generarArbolMinimo();
+		
+	}
+	
 	
 	
 	
