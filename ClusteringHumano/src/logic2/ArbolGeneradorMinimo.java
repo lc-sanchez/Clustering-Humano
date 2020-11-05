@@ -88,7 +88,7 @@ public class ArbolGeneradorMinimo {
 		return caminosDisponibles;
 	}
 	
-	public static Camino caminoMasPesado(ArrayList<Camino> caminos) {
+	public Camino caminoMasPesado(ArrayList<Camino> caminos) {
 		//Devuelve el camino mas pesado del arbol
 		if(caminos.size()==0){
 			throw new IllegalArgumentException("Array vacio");
