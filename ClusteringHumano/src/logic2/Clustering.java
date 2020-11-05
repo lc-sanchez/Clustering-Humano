@@ -28,6 +28,7 @@ public class Clustering {
 		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
 		arbolGeneradorMinimo=arbolMinimo.generarArbolMinimo();
 		
+		
 	}
 	
 	

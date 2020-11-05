@@ -19,7 +19,7 @@ public class ArbolGeneradorMinimo {
 	
 	
 	public ArbolGeneradorMinimo(GrafoDePersonas g) {
-		personas=g.getPersonas();
+		personas=g.getPersonas(); 
 		caminos=g.getCaminos();
 		caminosMinimos=generarArbolMinimo();
 		
@@ -88,6 +88,19 @@ public class ArbolGeneradorMinimo {
 		return caminosDisponibles;
 	}
 	
+	public static Camino caminoMasPesado(ArrayList<Camino> caminos) {
+		//Devuelve el camino mas pesado del arbol
+		if(caminos.size()==0){
+			throw new IllegalArgumentException("Array vacio");
+		}
+		Camino masPesado=caminos.get(0);
+		for(int i=1;i<caminos.size();i++) {
+			if(caminos.get(i).getSimilaridad()>masPesado.getSimilaridad()) {
+				masPesado=caminos.get(i);
+			}
+		}
+		return masPesado;
+	}
 	//------------------------------------Getters--------------------------------------------------
 	public ArrayList<Persona> getPersonas(){
 		return personas;
@@ -106,7 +119,7 @@ public class ArbolGeneradorMinimo {
 //		GrafoDePersonas g= new GrafoDePersonas(personas);
 //		ArbolGeneradorMinimo a= new ArbolGeneradorMinimo(g);
 //		System.out.println("GRAFO->"+ g.getCaminos());
-//		System.out.println("--------------------------------------");
+//		System.out.println("-------------------------------------------------------------------------");
 //		System.out.println("PERSONAS en el AGM->"+ a.getPersonas());
 //		System.out.println("AGM-> "+a.getCaminos());
 //	}

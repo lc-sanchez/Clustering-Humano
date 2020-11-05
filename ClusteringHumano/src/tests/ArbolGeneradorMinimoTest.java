@@ -12,7 +12,7 @@ import models.Camino;
 import models.GrafoDePersonas;
 import models.Persona;
 
-public class AlgoritmoDePrimTest {
+public class ArbolGeneradorMinimoTest {
 
 	ArbolGeneradorMinimo arbol;
 	GrafoDePersonas grafo;
@@ -49,7 +49,7 @@ public class AlgoritmoDePrimTest {
 				break; 
 			}
 		} 
-		assertEquals(true,sonIguales);
+		assertEquals(true,sonIguales); 
 		
 	}
 

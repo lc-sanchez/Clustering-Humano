@@ -48,6 +48,7 @@ public class GrafoDePersonas {
 		return false;
 	}
 	
+	
 	//------------------------------Getters y Setters-----------------------------------------
 	public ArrayList<Persona> getPersonas(){
 		return this.personas;
