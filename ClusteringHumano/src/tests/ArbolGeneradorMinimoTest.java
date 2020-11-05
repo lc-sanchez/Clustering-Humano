@@ -53,27 +53,27 @@ public class ArbolGeneradorMinimoTest {
 		
 	}
 	
-	@Test 
-	public void caminoMasPesadoTest() {
-		//Setup
-		ArrayList<Persona> personas= new ArrayList<Persona>();
-		Persona p1= new Persona("Maria",2,3,5,1);
-		Persona p2= new Persona("Juan",2,2,3,4);
-		Persona p3= new Persona("Kia",3,4,2,3);
-		Persona p4= new Persona("Lian",1,1,1,1);
-		personas.add(p1);
-		personas.add(p2);
-		personas.add(p3);
-		personas.add(p4);
-		//Execute
-		GrafoDePersonas g= new GrafoDePersonas(personas);
-		ArbolGeneradorMinimo a= new ArbolGeneradorMinimo(g);
-		Camino resultante= a.caminoMasPesado(a.getCaminos());
-		Camino caminoMasPesadoEsperado=new Camino(p1,p4);
-		//verify
-		boolean esperado= resultante.equalsDeCaminos(caminoMasPesadoEsperado);
-		assertEquals(true,esperado); 
-		
-	}
+//	@Test 
+//	public void caminoMasPesadoTest() {
+//		//Setup
+//		ArrayList<Persona> personas= new ArrayList<Persona>();
+//		Persona p1= new Persona("Maria",2,3,5,1);
+//		Persona p2= new Persona("Juan",2,2,3,4);
+//		Persona p3= new Persona("Kia",3,4,2,3);
+//		Persona p4= new Persona("Lian",1,1,1,1);
+//		personas.add(p1);
+//		personas.add(p2);
+//		personas.add(p3);
+//		personas.add(p4);
+//		//Execute
+//		GrafoDePersonas g= new GrafoDePersonas(personas);
+//		ArbolGeneradorMinimo a= new ArbolGeneradorMinimo(g);
+//		Camino resultante= a.caminoMasPesado(a.getCaminos());
+//		Camino caminoMasPesadoEsperado=new Camino(p1,p4);
+//		//verify
+//		boolean esperado= resultante.equalsDeCaminos(caminoMasPesadoEsperado);
+//		assertEquals(true,esperado); 
+//		
+//	}
 
 }
