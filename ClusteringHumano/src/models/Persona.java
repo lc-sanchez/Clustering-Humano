@@ -24,7 +24,7 @@ public class Persona {
 		Integer restaEspectaculo= Math.abs(this.getEspectaculo()-p2.getEspectaculo());
 		Integer restaCiencia= Math.abs(this.getCiencia()-p2.getCiencia());
  		
-		return restaDeporte+restaMusica+restaEspectaculo+restaCiencia;
+		return restaDeporte+restaMusica+restaEspectaculo+restaCiencia; 
 	}
 	
 	

@@ -17,9 +17,6 @@ public class ArbolGeneradorMinimo {
 	//private static ArrayList<Persona> personasMinimas;
 	private static ArrayList<Camino> caminosMinimos;
 	
-	private ArrayList<Persona> grupo1;
-	private ArrayList<Persona> grupo2;
-	
 	
 	public ArbolGeneradorMinimo(GrafoDePersonas g) {
 		personas=g.getPersonas(); 
@@ -91,7 +88,7 @@ public class ArbolGeneradorMinimo {
 		return caminosDisponibles;
 	}
 	
-
+	
 	
 	//------------------------------------Getters--------------------------------------------------
 	public ArrayList<Persona> getPersonas(){
@@ -108,6 +105,8 @@ public class ArbolGeneradorMinimo {
 		personas.add(new Persona("Juan",2,2,3,4));
 		personas.add(new Persona("Kia",3,4,2,3));
 		personas.add(new Persona("Lian",1,1,1,1));
+		personas.add(new Persona("Lila",2,3,5,4));
+		personas.add(new Persona("Rei",3,3,3,3));
 		GrafoDePersonas g= new GrafoDePersonas(personas);
 		ArbolGeneradorMinimo a1= new ArbolGeneradorMinimo(g);
 		System.out.println("GRAFO->"+ g.getCaminos());
