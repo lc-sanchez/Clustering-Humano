@@ -50,7 +50,7 @@ public class ArbolGeneradorMinimo {
 		return arbolGeneradorMinimo;
 	}
 
-	private static ArrayList<Persona> agregarPersonas(ArrayList<Persona> personasVisitadas, Camino mejorCamino) {
+	public  ArrayList<Persona> agregarPersonas(ArrayList<Persona> personasVisitadas, Camino mejorCamino) {
 		//Grafo-> Personas= {p1,p2,p3}
 		//		  Caminos= {(p1,p2)(p1,p3)(p2,p3)}
 		//Si la persona visitada solo es p1. Los caminos disponibles son: (p1,p2)->Peso=4 /(p1,p3)->Peso=0
@@ -70,12 +70,12 @@ public class ArbolGeneradorMinimo {
 		return personasVisitadas;
 	}
 
-	private static ArrayList<Camino> agregarCaminosDisponibles(ArrayList<Persona> personasVisitadas,ArrayList<Camino> caminos) {
+	public ArrayList<Camino> agregarCaminosDisponibles(ArrayList<Persona> personasVisitadas,ArrayList<Camino> caminos) {
 		//Caminos que llego desde los vertices visitados
 		//Grafo-> Personas= {p1,p2,p3}
 		//		  Caminos= {(p1,p2)(p1,p3)(p2,p3)}
 		//		  
-		//Si el unico visitado es p1. Entonces caminos disponibles son->{(p1,p2)(p1,p3)}
+		//Si el unico visitado es p1.(Todos los caminos que llego desde p1) Entonces caminos disponibles son->{(p1,p2)(p1,p3)}
 		ArrayList<Camino> caminosDisponibles = new ArrayList<Camino>(); 
 		for(int i=0;i<personasVisitadas.size();i++){
 			for(int c=0;c<caminos.size();c++){
@@ -88,7 +88,14 @@ public class ArbolGeneradorMinimo {
 		return caminosDisponibles;
 	}
 	
-	
+	public void eliminarCaminoMasPesado(Camino caminoMasPesado) {
+		int cantCaminos=caminosMinimos.size();
+		for(int i=0;i<cantCaminos;i++) {
+			if(caminosMinimos.get(i).equalsDeCaminos(caminoMasPesado)) {
+				caminosMinimos.remove(i);
+			}
+		}
+	}
 	
 	//------------------------------------Getters--------------------------------------------------
 	public ArrayList<Persona> getPersonas(){

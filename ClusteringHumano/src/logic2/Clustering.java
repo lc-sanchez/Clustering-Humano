@@ -10,6 +10,7 @@ public class Clustering {
 	//Clase que interacciona con la view
 	private ArrayList<Persona> listaPersonas;
 	private static ArrayList<Camino> arbolGeneradorMinimo;
+	private static ArbolGeneradorMinimo arbolGeneradorMinimo2;
 	private int cantPersonas;
 	private Camino caminoMasPesado;
 	
@@ -45,16 +46,60 @@ public class Clustering {
 		//Generamos el arbol generador minimo utilizando el algoritmo de Prim
 		System.out.println("AGM");
 		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
-		arbolGeneradorMinimo=arbolMinimo.generarArbolMinimo();
-		System.out.println(arbolGeneradorMinimo);
+		//arbolGeneradorMinimo=arbolMinimo.generarArbolMinimo();
+		System.out.println(arbolMinimo.getCaminos());
 		System.out.println("-----------------------");
 		
 		//Buscamos la arista mas pesada en el arbol y la guardamos
 		System.out.println("CaminoMasPesado");
-		caminoMasPesado=caminoMasPesado(arbolGeneradorMinimo);
+		caminoMasPesado=caminoMasPesado(arbolMinimo.getCaminos());
+		
+		//Sea agregan las personas de los vertices de ese camino a grupos distintos
+		grupoPersonas1.add(caminoMasPesado.getPersona1());
+		grupoPersonas2.add(caminoMasPesado.getPersona2());
 		System.out.println(caminoMasPesado);
+		
 		System.out.println("-----------------------");
-		engrupar(arbolGeneradorMinimo);
+		
+		//sacamos el camino mas pesado
+		arbolMinimo.eliminarCaminoMasPesado(caminoMasPesado);
+		
+		System.out.println("Nuevos caminos minimos");
+		System.out.println(arbolMinimo.getCaminos());
+		
+		System.out.println("-------------------------------");
+		System.out.println("GRUPO1------------------------");
+		engrupar2(arbolMinimo);
+		System.out.println(caminosGrupo1);
+		System.out.println(grupoPersonas1);
+		System.out.println("-------------------------------");
+		System.out.println("GRUPO2------------------------");
+		System.out.println(caminosGrupo2);
+		System.out.println(grupoPersonas2);
+		
+	}
+	
+	public void engrupar2(ArbolGeneradorMinimo arbolMinimo) {
+		//Setup
+		ArrayList<Camino> caminosArbolMinimo=arbolMinimo.getCaminos();
+		ArrayList<Camino> caminosDisponibles= new ArrayList<Camino>(); 
+		
+		//EMPEZAMOS CON EL PRIMER GRUPO
+		caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas1, caminosArbolMinimo); //Empezamos con el primer grupo
+		
+		while(grupoPersonas1.size()<arbolMinimo.getPersonas().size() && caminosDisponibles.size()>0) {			
+			caminosGrupo1.add(caminosDisponibles.get(0)); //Se agrega al camino(solo hay uno porque es el camino minimo)
+			grupoPersonas1=arbolMinimo.agregarPersonas(grupoPersonas1,caminosDisponibles.get(0)); //A las personas del camino
+			caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas1, caminosArbolMinimo); //Se busca el camino que sigue la otra persona			
+		}
+		
+		//SIGUE GRUPO 2
+		caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas2, caminosArbolMinimo);
+		while(grupoPersonas2.size()<arbolMinimo.getPersonas().size() && caminosDisponibles.size()>0) {			
+			caminosGrupo2.add(caminosDisponibles.get(0));
+			grupoPersonas2=arbolMinimo.agregarPersonas(grupoPersonas2,caminosDisponibles.get(0));
+			caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas2, caminosArbolMinimo); 			
+		}
 		
 		
 	}
@@ -98,7 +143,7 @@ public class Clustering {
 			contador++;
 			
 		}
-		eliminarCaminoMasPesado(caminosGrupo2);
+		//eliminarCaminoMasPesado(caminosGrupo2);
 	}	
 
 	public void agregarCamino(Camino camino, ArrayList<Camino> grupoParaAgregar, ArrayList<Camino> grupoParaComparar) {
@@ -133,13 +178,7 @@ public class Clustering {
 		return masPesado;
 	}
 	
-	public void eliminarCaminoMasPesado(ArrayList<Camino> caminos) {
-		for(int i=0;i<caminos.size();i++) {
-			if(caminos.get(i).equalsDeCaminos(caminoMasPesado)) {
-				caminos.remove(i);
-			}
-		}
-	}
+
 	
 	
 	
@@ -185,8 +224,8 @@ public class Clustering {
 		cluster.agregarPersona(p6);
 		cluster.ejecutarClustering();
 		
-		System.out.println(cluster.getGrupoPersonas1());
-		System.out.println(cluster.getGrupoPersonas2());
+		//System.out.println(cluster.getGrupoPersonas1());
+		//System.out.println(cluster.getGrupoPersonas2());
 	}
 	
 }
