@@ -58,7 +58,7 @@ public class Clustering {
 		
 	}
 	
-	public void engrupar(ArbolGeneradorMinimo arbolMinimo) {
+	private void engrupar(ArbolGeneradorMinimo arbolMinimo) {
 		//Setup
 		ArrayList<Camino> caminosArbolMinimo=arbolMinimo.getCaminos();
 		ArrayList<Camino> caminosDisponibles= new ArrayList<Camino>(); 
@@ -78,12 +78,11 @@ public class Clustering {
 			caminosGrupo2.add(caminosDisponibles.get(0));
 			grupoPersonas2=arbolMinimo.agregarPersonas(grupoPersonas2,caminosDisponibles.get(0));
 			caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas2, caminosArbolMinimo); 			
-		}
-		
+		}	
 		
 	}
 		
-	public  Camino caminoMasPesado(ArrayList<Camino> caminos) {
+	private  Camino caminoMasPesado(ArrayList<Camino> caminos) {
 		//Devuelve el camino mas pesado del arbol
 		if(caminos.size()==0){
 			throw new IllegalArgumentException("Array vacio");
@@ -108,24 +107,8 @@ public class Clustering {
 	public ArrayList<Persona> getGrupoPersonas1(){return grupoPersonas1;}
 	public ArrayList<Persona> getGrupoPersonas2(){return grupoPersonas2;}
 	
-	public static void main(String[] args) {
+	public ArrayList<Camino> getCaminosGrupo1(){return caminosGrupo1;}
+	public ArrayList<Camino> getCaminosGrupo2(){return caminosGrupo2;}
 	
-		System.out.println("-------------------------------------------------------------------------");
-		Persona p1= new Persona("Maria",2,3,5,1);
-		Persona p2= new Persona("Juan",2,2,3,4);
-		Persona p3= new Persona("Kia",3,4,2,3);
-		Persona p4= new Persona("Lian",1,1,1,1);
-		Persona p5=new Persona("Lila",2,3,5,4);
-		Persona p6=new Persona("Rei",3,3,3,3);
-		Clustering cluster=new Clustering();
-		cluster.agregarPersona(p1);
-		cluster.agregarPersona(p2);
-		cluster.agregarPersona(p3);
-		cluster.agregarPersona(p4);
-		cluster.agregarPersona(p5);
-		cluster.agregarPersona(p6);
-		cluster.ejecutarClustering();
-		
-	}
 	
 }
