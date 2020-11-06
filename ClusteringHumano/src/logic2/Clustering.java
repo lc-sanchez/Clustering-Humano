@@ -32,7 +32,6 @@ public class Clustering {
 		//Para el boton de formulario
 		listaPersonas.add(persona);
 		cantPersonas++;
-		
 	}
 	
 	public void ejecutarClustering() {
@@ -102,25 +101,6 @@ public class Clustering {
 		
 		
 	}
-	
-
-	public void agregarCamino(Camino camino, ArrayList<Camino> grupoParaAgregar, ArrayList<Camino> grupoParaComparar) {
-		//Para verificar que no esten en otro grupo
-		if(!grupoParaAgregar.contains(camino) && !grupoParaComparar.contains(camino)) {
-			grupoParaAgregar.add(camino);
-		}
-	}
-	public void agregarPersonas(Camino camino, ArrayList<Persona> grupoParaAgregar, ArrayList<Persona> grupoParaComparar) {
-		Persona p1=camino.getPersona1();
-		Persona p2= camino.getPersona2();
-		//Para verificar que no esten en otro grupo
-		if(!grupoParaAgregar.contains(p1) && !grupoParaComparar.contains(p1)) {
-			grupoParaAgregar.add(p1);
-		}
-		if(!grupoParaAgregar.contains(p2) && !grupoParaComparar.contains(p2)) {
-			grupoParaAgregar.add(p2);
-		}
-	}
 		
 	public  Camino caminoMasPesado(ArrayList<Camino> caminos) {
 		//Devuelve el camino mas pesado del arbol
@@ -137,10 +117,6 @@ public class Clustering {
 	}
 	
 
-	
-	
-	
-	
 	//-----------------------------Getters y Setters---------------------------------
 	public int getCantPersonas() {
 		return cantPersonas; 
@@ -152,20 +128,7 @@ public class Clustering {
 	public ArrayList<Persona> getGrupoPersonas2(){return grupoPersonas2;}
 	
 	public static void main(String[] args) {
-//		ArrayList<Persona> personas= new ArrayList<Persona>();
-//		personas.add(new Persona("Maria",2,3,5,1));
-//		personas.add(new Persona("Juan",2,2,3,4));
-//		personas.add(new Persona("Kia",3,4,2,3));
-//		personas.add(new Persona("Lian",1,1,1,1));
-//		personas.add(new Persona("Lila",2,3,5,4));
-//		personas.add(new Persona("Rei",3,3,3,3));
-//		GrafoDePersonas g= new GrafoDePersonas(personas);
-//		ArbolGeneradorMinimo a1= new ArbolGeneradorMinimo(g);
-//		System.out.println("GRAFO->"+ g.getCaminos());
-//		System.out.println("-------------------------------------------------------------------------");
-//		System.out.println("PERSONAS en el AGM->"+ a1.getPersonas());
-//		System.out.println("AGM-> "+a1.getCaminos());
-//		
+	
 		System.out.println("-------------------------------------------------------------------------");
 		Persona p1= new Persona("Maria",2,3,5,1);
 		Persona p2= new Persona("Juan",2,2,3,4);
@@ -182,8 +145,6 @@ public class Clustering {
 		cluster.agregarPersona(p6);
 		cluster.ejecutarClustering();
 		
-		//System.out.println(cluster.getGrupoPersonas1());
-		//System.out.println(cluster.getGrupoPersonas2());
 	}
 	
 }
