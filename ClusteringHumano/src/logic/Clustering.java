@@ -36,44 +36,25 @@ public class Clustering {
 	
 	public void ejecutarClustering() {
 		//Generamos el grafo a partir de la lista de personas
-		System.out.println("GRAFO");
 		GrafoDePersonas grafo= new GrafoDePersonas(listaPersonas);
-		System.out.println(grafo.getCaminos());
-		System.out.println("-----------------------");
 		
 		//Generamos el arbol generador minimo utilizando el algoritmo de Prim
-		System.out.println("AGM");
 		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
-		//arbolGeneradorMinimo=arbolMinimo.generarArbolMinimo();
-		System.out.println(arbolMinimo.getCaminos());
-		System.out.println("-----------------------");
-		
+
 		//Buscamos la arista mas pesada en el arbol y la guardamos
-		System.out.println("CaminoMasPesado");
 		caminoMasPesado=caminoMasPesado(arbolMinimo.getCaminos());
 		
 		//Sea agregan las personas de los vertices de ese camino a grupos distintos
+		//Es para tener una referencia a los vertices y separar los grupos
 		grupoPersonas1.add(caminoMasPesado.getPersona1());
 		grupoPersonas2.add(caminoMasPesado.getPersona2());
-		System.out.println(caminoMasPesado);
-		
-		System.out.println("-----------------------");
 		
 		//sacamos el camino mas pesado
 		arbolMinimo.eliminarCaminoMasPesado(caminoMasPesado);
 		
-		System.out.println("Nuevos caminos minimos");
-		System.out.println(arbolMinimo.getCaminos());
-		
-		System.out.println("-------------------------------");
-		System.out.println("GRUPO1------------------------");
+		//Ejecutamos clustering
 		engrupar(arbolMinimo);
-		System.out.println(caminosGrupo1);
-		System.out.println(grupoPersonas1);
-		System.out.println("-------------------------------");
-		System.out.println("GRUPO2------------------------");
-		System.out.println(caminosGrupo2);
-		System.out.println(grupoPersonas2);
+
 		
 	}
 	
