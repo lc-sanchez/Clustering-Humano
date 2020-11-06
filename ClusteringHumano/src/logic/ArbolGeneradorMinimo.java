@@ -1,4 +1,4 @@
-package logic2;
+package logic;
 
 import java.util.ArrayList;
 

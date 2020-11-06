@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import logic2.ArbolGeneradorMinimo;
+import logic.ArbolGeneradorMinimo;
 import models.Camino;
 import models.GrafoDePersonas;
 import models.Persona;
