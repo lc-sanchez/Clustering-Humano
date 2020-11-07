@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import logic.Clustering;
 
@@ -31,6 +32,8 @@ public class MainView extends JFrame {
 		this.getContentPane().setLayout(null);
 		this.getContentPane().setBackground(Color.LIGHT_GRAY);
 		
+		
+		
 		//************** SE AGREGAN LOS BOTONES *********************************//
 		
 		//Creamos todos los botones
@@ -49,7 +52,7 @@ public class MainView extends JFrame {
 						getFrame().setVisible(true);
 						super.dispose();
 					}
-				};				
+				};
 				agregarPersona.setVisible(true);
 				
 				dispose();
@@ -91,7 +94,9 @@ public class MainView extends JFrame {
 		//Se agrega boton para armar los grupos/correr el algoritmo
 		armarGruposBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Aca se llamaria al algoritmo del camino minimo			
+				//Aca se llamaria al algoritmo del camino minimo
+				cluster.ejecutarClustering();
+				JOptionPane.showMessageDialog(getFrame(), "Se han armado los grupos satisfactoriamente");
 			}
 		});
 		armarGruposBoton.setBounds(20, 260, 200, 50);

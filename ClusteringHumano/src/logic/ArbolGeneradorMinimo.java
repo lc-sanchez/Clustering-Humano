@@ -11,11 +11,11 @@ import models.Persona;
 public class ArbolGeneradorMinimo {
 	
 	//Se utiliza el Algoritmo de Prim para generar el arbol minimo
-	private static ArrayList<Persona> personas;
-	private static ArrayList<Camino> caminos;
+	public ArrayList<Persona> personas;
+	public ArrayList<Camino> caminos;
 	
 	//private static ArrayList<Persona> personasMinimas;
-	private static ArrayList<Camino> caminosMinimos;
+	public ArrayList<Camino> caminosMinimos;
 	
 	
 	public ArbolGeneradorMinimo(GrafoDePersonas g) {
@@ -89,8 +89,7 @@ public class ArbolGeneradorMinimo {
 	}
 	
 	public void eliminarCaminoMasPesado(Camino caminoMasPesado) {
-		int cantCaminos=caminosMinimos.size();
-		for(int i=0;i<cantCaminos;i++) {
+		for(int i=0;i<caminosMinimos.size();i++) {
 			if(caminosMinimos.get(i).equalsDeCaminos(caminoMasPesado)) {
 				caminosMinimos.remove(i);
 			}

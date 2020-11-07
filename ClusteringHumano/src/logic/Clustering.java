@@ -12,7 +12,6 @@ public class Clustering {
 	
 	private int cantPersonas;
 	private Camino caminoMasPesado;
-	
 
 	private ArrayList<Persona> grupoPersonas1;
 	private ArrayList<Persona> grupoPersonas2;
@@ -40,7 +39,7 @@ public class Clustering {
 		
 		//Generamos el arbol generador minimo utilizando el algoritmo de Prim
 		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
-
+		
 		//Buscamos la arista mas pesada en el arbol y la guardamos
 		caminoMasPesado=caminoMasPesado(arbolMinimo.getCaminos());
 		
@@ -54,8 +53,6 @@ public class Clustering {
 		
 		//Ejecutamos clustering
 		engrupar(arbolMinimo);
-
-		
 	}
 	
 	private void engrupar(ArbolGeneradorMinimo arbolMinimo) {
@@ -82,7 +79,7 @@ public class Clustering {
 		
 	}
 		
-	private  Camino caminoMasPesado(ArrayList<Camino> caminos) {
+	private Camino caminoMasPesado(ArrayList<Camino> caminos) {
 		//Devuelve el camino mas pesado del arbol
 		if(caminos.size()==0){
 			throw new IllegalArgumentException("Array vacio");
