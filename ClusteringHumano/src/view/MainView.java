@@ -1,6 +1,9 @@
 package view;
 
 import javax.swing.JFrame;
+
+import logic.Clustering;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.Color;
@@ -11,9 +14,11 @@ public class MainView extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public Clustering cluster;
 	
 	
-	public MainView() {
+	public MainView(Clustering clusterPasado) {
+		cluster = clusterPasado;
 		inicializar();
 	} 
 	
@@ -38,7 +43,7 @@ public class MainView extends JFrame {
 		agregarNuevaPersonaBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				@SuppressWarnings("serial")
-				NuevaPersonaView agregarPersona = new NuevaPersonaView() {
+				NuevaPersonaView agregarPersona = new NuevaPersonaView(cluster) {
 					@Override
 					public void dispose() {
 						getFrame().setVisible(true);
@@ -56,14 +61,22 @@ public class MainView extends JFrame {
 		//Se agrega boton para ver las personas
 		verPersonasBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VerPersonasView verPersonas = new VerPersonasView();
+				@SuppressWarnings("serial")
+				VerPersonasView verPersonas = new VerPersonasView(cluster){
+					@SuppressWarnings("unused")
+					public void dispose() {
+						getFrame().setVisible(true);
+						super.frame.dispose();
+					}
+				};
+				verPersonas.inicializarVerPersonasView();
 				verPersonas.setVisible(true);
-
+				dispose();
 			}
 		});
 		verPersonasBoton.setBounds(20, 120, 200, 50);
 		this.getContentPane().add(verPersonasBoton);
-		
+		 
 		//Se agrega boton para ver los grupos
 		verGruposBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -8,7 +8,7 @@ import models.GrafoDePersonas;
 
 public class Clustering {
 	//Clase que interacciona con la view
-	private ArrayList<Persona> listaPersonas;	
+	public ArrayList<Persona> listaPersonas;	
 	
 	private int cantPersonas;
 	private Camino caminoMasPesado;
