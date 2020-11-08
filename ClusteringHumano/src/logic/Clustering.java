@@ -21,19 +21,22 @@ public class Clustering {
 	
 	public Clustering() {
 		listaPersonas=new ArrayList<Persona>();
-		grupoPersonas1=new ArrayList<Persona>();
-		grupoPersonas2=new ArrayList<Persona>();
-		caminosGrupo1= new ArrayList<Camino>();
-		caminosGrupo2=new ArrayList<Camino>();
+		
 	}
 	
 	public void agregarPersona(Persona persona) {
 		//Para el boton de formulario
 		listaPersonas.add(persona);
 		cantPersonas++;
+		
 	}
 	
 	public void ejecutarClustering() {
+		grupoPersonas1=new ArrayList<Persona>();
+		grupoPersonas2=new ArrayList<Persona>();
+		caminosGrupo1= new ArrayList<Camino>();
+		caminosGrupo2=new ArrayList<Camino>();
+		
 		//Generamos el grafo a partir de la lista de personas
 		GrafoDePersonas grafo= new GrafoDePersonas(listaPersonas);
 		
