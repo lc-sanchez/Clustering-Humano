@@ -96,7 +96,7 @@ public class NuevaPersonaView extends JFrame{
 		main.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String area = areaParaCompletar.getText();
-				if(area==area) {
+				if(cluster.existeNombreEnPersonas(area)) {
 					JOptionPane.showMessageDialog(getFrame(), "Nombre ya usado, utilice otro.");
 				}
 				else {

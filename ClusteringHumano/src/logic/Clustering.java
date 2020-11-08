@@ -109,14 +109,12 @@ public class Clustering {
 	}
 	
 	public boolean existeNombreEnPersonas(String nombre) {
-		boolean existe=false;
 		for(int i=0;i<getCantPersonas();i++) {
-			if(listaPersonas.get(i).getNombre()==nombre) {
-				existe=true;
-				break;
+			if(listaPersonas.get(i).getNombre().equals(nombre)) {
+				return true;
 			}
 		}
-		return existe;
+		return false;
 	}
 	//-----------------------------Getters y Setters---------------------------------
 	public int getCantPersonas() {return cantPersonas;}
@@ -128,24 +126,5 @@ public class Clustering {
 	
 	public ArrayList<Camino> getCaminosGrupo1(){return caminosGrupo1;}
 	public ArrayList<Camino> getCaminosGrupo2(){return caminosGrupo2;}
-	
-	public static void main(String[] args) {
-		Persona p1= new Persona("Maria",1,1,1,1);
-		Persona p2= new Persona("Juan",1,1,1,1);
-		Persona p3= new Persona("Kia",1,1,1,1);
-		Persona p4=new Persona("Mia",2,3,4,5);
-		
-		Clustering cluster=new Clustering();
-		cluster.agregarPersona(p1);
-		cluster.agregarPersona(p2);
-		cluster.agregarPersona(p3);
-		cluster.agregarPersona(p4);
-		
-		cluster.ejecutarClustering();
-		
-		System.out.println(cluster.getGrupoPersonas1());
-		System.out.println(cluster.getGrupoPersonas2());
-	
-	}
 	
 }
