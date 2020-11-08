@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
@@ -95,15 +96,24 @@ public class NuevaPersonaView extends JFrame{
 		main.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String area = areaParaCompletar.getText();
-				int interesDeportes = comboBox.getSelectedIndex();
-				int interesMusica = comboBox.getSelectedIndex();
-				int interesEspectaculo = comboBox.getSelectedIndex();
-				int interesCiencia = comboBox.getSelectedIndex();
-				Persona nuevaPersona = new Persona(area, interesDeportes, interesMusica, interesEspectaculo, interesCiencia);
-				cluster.agregarPersona(nuevaPersona);
-				dispose();
+				if(area==area) {
+					JOptionPane.showMessageDialog(getFrame(), "Nombre ya usado, utilice otro.");
+				}
+				else {
+					int interesDeportes = comboBox.getSelectedIndex();
+					int interesMusica = comboBox.getSelectedIndex();
+					int interesEspectaculo = comboBox.getSelectedIndex();
+					int interesCiencia = comboBox.getSelectedIndex();	
+					Persona nuevaPersona = new Persona(area, interesDeportes, interesMusica, interesEspectaculo, interesCiencia);
+					cluster.agregarPersona(nuevaPersona);
+					dispose();
+				}
 			}
 		});
+	}
+	
+	private JFrame getFrame(){
+	    return this;
 	}
 	
 

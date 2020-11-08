@@ -83,9 +83,16 @@ public class MainView extends JFrame {
 		//Se agrega boton para ver los grupos
 		verGruposBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VerGruposView verGrupos = new VerGruposView();
-				verGrupos.setVisible(true);
-				
+				@SuppressWarnings("serial")
+				VerGruposView verGrupos = new VerGruposView(cluster){
+					@SuppressWarnings("unused")
+					public void dispose() {
+						getFrame().setVisible(true);
+						super.frame.dispose();
+					}
+				};
+				verGrupos.inicializarVerGruposView();
+				dispose();
 			}
 		});
 		verGruposBoton.setBounds(20, 190, 200, 50);
