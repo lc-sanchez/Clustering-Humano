@@ -43,16 +43,25 @@ public class Clustering {
 		//Buscamos la arista mas pesada en el arbol y la guardamos
 		caminoMasPesado=caminoMasPesado(arbolMinimo.getCaminos());
 		
-		//Sea agregan las personas de los vertices de ese camino a grupos distintos
-		//Es para tener una referencia a los vertices y separar los grupos
-		grupoPersonas1.add(caminoMasPesado.getPersona1());
-		grupoPersonas2.add(caminoMasPesado.getPersona2());
+		if(caminoMasPesado.getSimilaridad()==0) {
+			//Por default se agregan todos al grupo1
+			grupoPersonas1.add(caminoMasPesado.getPersona1());
+			engrupar(arbolMinimo);
+		}
 		
-		//sacamos el camino mas pesado
-		arbolMinimo.eliminarCaminoMasPesado(caminoMasPesado);
+		else {
+			//Sea agregan las personas de los vertices de ese camino a grupos distintos
+			//Es para tener una referencia a los vertices y separar los grupos
+			grupoPersonas1.add(caminoMasPesado.getPersona1());
+			grupoPersonas2.add(caminoMasPesado.getPersona2());
+			
+			//sacamos el camino mas pesado
+			arbolMinimo.eliminarCaminoMasPesado(caminoMasPesado);
+			
+			//Ejecutamos clustering
+			engrupar(arbolMinimo);
+		}
 		
-		//Ejecutamos clustering
-		engrupar(arbolMinimo);
 	}
 	
 	private void engrupar(ArbolGeneradorMinimo arbolMinimo) {
@@ -61,21 +70,27 @@ public class Clustering {
 		ArrayList<Camino> caminosDisponibles= new ArrayList<Camino>(); 
 		
 		//EMPEZAMOS CON EL PRIMER GRUPO
-		caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas1, caminosArbolMinimo); //Empezamos con el primer grupo
-		
-		while(grupoPersonas1.size()<arbolMinimo.getPersonas().size() && caminosDisponibles.size()>0) {			
-			caminosGrupo1.add(caminosDisponibles.get(0)); //Se agrega al camino(solo hay uno porque es el camino minimo)
-			grupoPersonas1=arbolMinimo.agregarPersonas(grupoPersonas1,caminosDisponibles.get(0)); //A las personas del camino
-			caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas1, caminosArbolMinimo); //Se busca el camino que sigue la otra persona			
+		if(grupoPersonas1.size()!=0) {
+			caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas1, caminosArbolMinimo); //Empezamos con el primer grupo
+			
+			while(grupoPersonas1.size()<arbolMinimo.getPersonas().size() && caminosDisponibles.size()>0) {			
+				caminosGrupo1.add(caminosDisponibles.get(0)); //Se agrega al camino(solo hay uno porque es el camino minimo)
+				grupoPersonas1=arbolMinimo.agregarPersonas(grupoPersonas1,caminosDisponibles.get(0)); //A las personas del camino
+				caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas1, caminosArbolMinimo); //Se busca el camino que sigue la otra persona			
+			}
+		}
+		//SIGUE GRUPO 2
+		if(grupoPersonas2.size()!=0) {
+			
+			caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas2, caminosArbolMinimo);
+			while(grupoPersonas2.size()<arbolMinimo.getPersonas().size() && caminosDisponibles.size()>0) {			
+				caminosGrupo2.add(caminosDisponibles.get(0));
+				grupoPersonas2=arbolMinimo.agregarPersonas(grupoPersonas2,caminosDisponibles.get(0));
+				caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas2, caminosArbolMinimo); 			
+			}	
 		}
 		
-		//SIGUE GRUPO 2
-		caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas2, caminosArbolMinimo);
-		while(grupoPersonas2.size()<arbolMinimo.getPersonas().size() && caminosDisponibles.size()>0) {			
-			caminosGrupo2.add(caminosDisponibles.get(0));
-			grupoPersonas2=arbolMinimo.agregarPersonas(grupoPersonas2,caminosDisponibles.get(0));
-			caminosDisponibles=arbolMinimo.agregarCaminosDisponibles(grupoPersonas2, caminosArbolMinimo); 			
-		}	
+		
 		
 	}
 		
@@ -93,11 +108,18 @@ public class Clustering {
 		return masPesado;
 	}
 	
-
-	//-----------------------------Getters y Setters---------------------------------
-	public int getCantPersonas() {
-		return cantPersonas; 
+	public boolean existeNombreEnPersonas(String nombre) {
+		boolean existe=false;
+		for(int i=0;i<getCantPersonas();i++) {
+			if(listaPersonas.get(i).getNombre()==nombre) {
+				existe=true;
+				break;
+			}
+		}
+		return existe;
 	}
+	//-----------------------------Getters y Setters---------------------------------
+	public int getCantPersonas() {return cantPersonas;}
 	
 	public ArrayList<Persona> getPersonas(){return this.listaPersonas;}
 	
@@ -107,5 +129,23 @@ public class Clustering {
 	public ArrayList<Camino> getCaminosGrupo1(){return caminosGrupo1;}
 	public ArrayList<Camino> getCaminosGrupo2(){return caminosGrupo2;}
 	
+	public static void main(String[] args) {
+		Persona p1= new Persona("Maria",1,1,1,1);
+		Persona p2= new Persona("Juan",1,1,1,1);
+		Persona p3= new Persona("Kia",1,1,1,1);
+		Persona p4=new Persona("Mia",2,3,4,5);
+		
+		Clustering cluster=new Clustering();
+		cluster.agregarPersona(p1);
+		cluster.agregarPersona(p2);
+		cluster.agregarPersona(p3);
+		cluster.agregarPersona(p4);
+		
+		cluster.ejecutarClustering();
+		
+		System.out.println(cluster.getGrupoPersonas1());
+		System.out.println(cluster.getGrupoPersonas2());
+	
+	}
 	
 }
