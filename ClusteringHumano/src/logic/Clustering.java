@@ -13,8 +13,8 @@ public class Clustering {
 	
 	private int cantPersonas;
 	private Camino caminoMasPesado;
-
-	//Variables para engrupar
+ 
+	//Variables para separar los grupos
 	private ArrayList<Persona> grupoPersonas1;
 	private ArrayList<Persona> grupoPersonas2;
 	private ArrayList<Camino> caminosGrupo1;
