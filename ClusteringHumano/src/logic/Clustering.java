@@ -29,7 +29,6 @@ public class Clustering {
 		listaPersonas.add(persona);
 		cantPersonas++;	
 		grafoDePersonas=new GrafoDePersonas(listaPersonas);
-		
 	}
 	
 	
@@ -43,7 +42,7 @@ public class Clustering {
 		//Generamos el grafo a partir de la lista de personas
 		GrafoDePersonas grafo= new GrafoDePersonas(listaPersonas);
 		
-		System.out.println(grafo.getCaminos());
+		
 		
 		//Generamos el arbol generador minimo utilizando el algoritmo de Prim
 		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
@@ -134,7 +133,7 @@ public class Clustering {
 	}
 	//-----------------------------Getters y Setters---------------------------------
 	public int getCantPersonas() {return cantPersonas;}
-	public ArrayList<Camino> getCaminosGrafo() {	return grafoDePersonas.getCaminos();}
+	public ArrayList<Camino> getCaminosGrafo() {return grafoDePersonas.getCaminos();}
 	
 	public ArrayList<Persona> getPersonas(){return this.listaPersonas;}
 	
@@ -144,8 +143,7 @@ public class Clustering {
 	public ArrayList<Camino> getCaminosGrupo1(){return caminosGrupo1;}
 	public ArrayList<Camino> getCaminosGrupo2(){return caminosGrupo2;}
 	
-	public Integer getSimiliaridad(Camino camino) {return camino.getSimilaridad();}
-	
-	
-	
+
+	public Integer getSimiliaridad(Persona persona1, Persona persona2) {return persona1.calcularSimilaridad(persona2);}
+
 }
