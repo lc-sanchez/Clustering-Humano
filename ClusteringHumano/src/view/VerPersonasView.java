@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import logic.Clustering;
+import models.Camino;
 import models.Persona;
 
 
@@ -79,7 +80,7 @@ public class VerPersonasView extends JPanel {
 				g.drawLine(coordenadasXUsadas.get(i)+20,coordenadasYUsadas.get(i)+20, 
 						coordenadasXUsadas.get(j+1)+20,coordenadasYUsadas.get(j+1)+20);
 				g.setColor(Color.BLACK);
-				g.drawString(obtenerPeso(cluster.listaPersonas.get(i),cluster.listaPersonas.get(j+1)),
+				g.drawString(obtenerPeso(cluster.getCaminosGrafo().get(i)),
 						obtenerCoordenada(coordenadasXUsadas.get(i),coordenadasXUsadas.get(j+1)),
 						obtenerCoordenada(coordenadasYUsadas.get(i),coordenadasYUsadas.get(j+1)));
 			}
@@ -92,10 +93,8 @@ public class VerPersonasView extends JPanel {
 		return ret;
 	}
 
-	private String obtenerPeso(Persona persona, Persona persona2) {
-//		System.out.println(cluster.getSimiliaridad(persona, persona2));
-//		System.out.println(Integer.toString(cluster.getSimiliaridad(persona, persona2)) + "\n");
-		return Integer.toString(cluster.getSimiliaridad(persona, persona2));
+	private String obtenerPeso(Camino camino) {
+		return Integer.toString(cluster.getSimiliaridad(camino));
 	}
 
 	private void numRandomX() {

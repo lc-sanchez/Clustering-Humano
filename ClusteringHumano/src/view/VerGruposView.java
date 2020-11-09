@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import logic.Clustering;
+import models.Persona;
 
 public class VerGruposView extends JPanel{
 
@@ -102,9 +103,17 @@ public class VerGruposView extends JPanel{
 				}
 				g.drawLine(coordenadas.get(0)+15,coordenadas.get(1)+25, 
 						coordenadas.get(2)+15,coordenadas.get(3)+25);
+				g.drawString(Integer.toString(cluster.getCaminosGrupo1().get(i).getSimilaridad()),
+						obtenerCoordenada(coordenadas.get(0),coordenadas.get(2)),
+						obtenerCoordenada(coordenadas.get(1),coordenadas.get(3)));
 			}
 		}
 		
+	}
+	
+	private int obtenerCoordenada(Integer integer, Integer integer2) {
+		int ret = ((integer+integer2)/2)+20;
+		return ret;
 	}
 	
 	private void pintarAristasGrupo2(Graphics g) {
