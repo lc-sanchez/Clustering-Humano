@@ -9,7 +9,7 @@ import models.GrafoDePersonas;
 public class Clustering {
 	//Clase que interacciona con la view
 	public ArrayList<Persona> listaPersonas;
-	public GrafoDePersonas grafo;
+	public GrafoDePersonas grafoDePersonas;
 	
 	private int cantPersonas;
 	private Camino caminoMasPesado;
@@ -27,11 +27,13 @@ public class Clustering {
 	public void agregarPersona(Persona persona) {
 		//Para el boton de formulario
 		listaPersonas.add(persona);
-		cantPersonas++;
-		grafo=new GrafoDePersonas(listaPersonas);
-		
+		System.out.println("Lista de Personas-> "+ listaPersonas);
+		cantPersonas++;	
+		grafoDePersonas=new GrafoDePersonas(listaPersonas);
 		
 	}
+	
+	
 	
 	public void ejecutarClustering() {
 		grupoPersonas1=new ArrayList<Persona>();
@@ -40,12 +42,12 @@ public class Clustering {
 		caminosGrupo2=new ArrayList<Camino>();
 		
 		//Generamos el grafo a partir de la lista de personas
-		grafo= new GrafoDePersonas(listaPersonas);
+		GrafoDePersonas grafo= new GrafoDePersonas(listaPersonas);
 		
+		System.out.println(grafo.getCaminos());
 		
 		//Generamos el arbol generador minimo utilizando el algoritmo de Prim
 		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
-		System.out.println(arbolMinimo.getCaminos());
 		
 		if(cantPersonas>1) {
 			//Buscamos la arista mas pesada en el arbol y la guardamos
@@ -76,6 +78,7 @@ public class Clustering {
 			}
 			
 		}
+	
 	}
 	
 	private void engrupar(ArbolGeneradorMinimo arbolMinimo) {
@@ -132,7 +135,7 @@ public class Clustering {
 	}
 	//-----------------------------Getters y Setters---------------------------------
 	public int getCantPersonas() {return cantPersonas;}
-	public ArrayList<Camino> getCaminosGrafo() {	return grafo.getCaminos();}
+	public ArrayList<Camino> getCaminosGrafo() {	return grafoDePersonas.getCaminos();}
 	
 	public ArrayList<Persona> getPersonas(){return this.listaPersonas;}
 	
@@ -144,6 +147,24 @@ public class Clustering {
 	
 	public Integer getSimiliaridad(Camino camino) {return camino.getSimilaridad();}
 	
-
 	
+	public static void main(String[] args) {
+		Persona p1= new Persona("Maria",2,3,5,1);
+		Persona p2= new Persona("Juan",2,2,3,4);
+		Persona p3= new Persona("Kia",3,4,2,3);
+		
+		Persona p4= new Persona("R",4,1,1,1);
+		Persona p5= new Persona("J",3,1,1,1); 
+		Clustering cluster=new Clustering();
+		//cluster.agregarPersona(p1);
+		//cluster.agregarPersona(p2);
+		//cluster.agregarPersona(p3);
+		cluster.agregarPersona(p4);
+		System.out.println(cluster.getCaminosGrafo());
+		cluster.agregarPersona(p5);
+		System.out.println(cluster.getCaminosGrafo());
+		//cluster.ejecutarClustering();
+		
+		
+	}
 }

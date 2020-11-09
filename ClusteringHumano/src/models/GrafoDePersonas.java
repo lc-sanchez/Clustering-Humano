@@ -17,6 +17,7 @@ public class GrafoDePersonas {
 		cantVertices=personas.size();
 		caminos=new ArrayList<Camino>();
 		crearCaminos(); 
+		System.out.println(getCaminos());
 	}
 	
 	private void crearCaminos() {
