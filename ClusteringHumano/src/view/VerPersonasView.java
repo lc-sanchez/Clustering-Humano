@@ -81,8 +81,8 @@ public class VerPersonasView extends JPanel {
 				g.setColor(Color.RED);
 				g.drawLine(coordenadasXUsadas.get(i)+20,coordenadasYUsadas.get(i)+20, 
 						coordenadasXUsadas.get(j+1)+20,coordenadasYUsadas.get(j+1)+20);
-				g.setColor(Color.BLACK);
 				
+				g.setColor(Color.BLACK);
 				g.drawString(obtenerPeso(cluster.listaPersonas.get(i),cluster.listaPersonas.get(j+1)),
 						obtenerCoordenada(coordenadasXUsadas.get(i),coordenadasXUsadas.get(j+1)),
 						obtenerCoordenada(coordenadasYUsadas.get(i),coordenadasYUsadas.get(j+1)));
