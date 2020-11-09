@@ -73,11 +73,12 @@ public class VerPersonasView extends JPanel {
 	}
 
 	private void pintarAristas(Graphics g) {
-		g.setColor(Color.RED);
 		for (int i = 0 ; i < cluster.getCantPersonas()-1; i++) {
 			for(int j = 0 ; j < cluster.getCantPersonas()-1; j++) {
+				g.setColor(Color.RED);
 				g.drawLine(coordenadasXUsadas.get(i)+20,coordenadasYUsadas.get(i)+20, 
 						coordenadasXUsadas.get(j+1)+20,coordenadasYUsadas.get(j+1)+20);
+				g.setColor(Color.BLACK);
 				g.drawString(obtenerPeso(cluster.listaPersonas.get(i),cluster.listaPersonas.get(j+1)),
 						obtenerCoordenada(coordenadasXUsadas.get(i),coordenadasXUsadas.get(j+1)),
 						obtenerCoordenada(coordenadasYUsadas.get(i),coordenadasYUsadas.get(j+1)));
@@ -87,13 +88,14 @@ public class VerPersonasView extends JPanel {
 	}
 
 	private int obtenerCoordenada(Integer integer, Integer integer2) {
-		// TODO Auto-generated method stub
-		return 0;
+		int ret = ((integer+integer2)/2)+20;
+		return ret;
 	}
 
 	private String obtenerPeso(Persona persona, Persona persona2) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println(cluster.getSimiliaridad(persona, persona2));
+		System.out.println(Integer.toString(cluster.getSimiliaridad(persona, persona2)) + "\n");
+		return Integer.toString(cluster.getSimiliaridad(persona, persona2));
 	}
 
 	private void numRandomX() {
