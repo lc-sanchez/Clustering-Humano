@@ -9,6 +9,7 @@ import models.GrafoDePersonas;
 public class Clustering {
 	//Clase que interacciona con la view
 	public ArrayList<Persona> listaPersonas;
+	public GrafoDePersonas grafo;
 	
 	private int cantPersonas;
 	private Camino caminoMasPesado;
@@ -27,6 +28,8 @@ public class Clustering {
 		//Para el boton de formulario
 		listaPersonas.add(persona);
 		cantPersonas++;
+		grafo=new GrafoDePersonas(listaPersonas);
+		
 		
 	}
 	
@@ -37,10 +40,13 @@ public class Clustering {
 		caminosGrupo2=new ArrayList<Camino>();
 		
 		//Generamos el grafo a partir de la lista de personas
-		GrafoDePersonas grafo= new GrafoDePersonas(listaPersonas);
+		grafo= new GrafoDePersonas(listaPersonas);
+		
 		
 		//Generamos el arbol generador minimo utilizando el algoritmo de Prim
 		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
+		System.out.println(arbolMinimo.getCaminos());
+		
 		if(cantPersonas>1) {
 			//Buscamos la arista mas pesada en el arbol y la guardamos
 			caminoMasPesado=caminoMasPesado(arbolMinimo.getCaminos());
@@ -126,6 +132,7 @@ public class Clustering {
 	}
 	//-----------------------------Getters y Setters---------------------------------
 	public int getCantPersonas() {return cantPersonas;}
+	public ArrayList<Camino> getCaminosGrafo() {	return grafo.getCaminos();}
 	
 	public ArrayList<Persona> getPersonas(){return this.listaPersonas;}
 	
@@ -135,7 +142,8 @@ public class Clustering {
 	public ArrayList<Camino> getCaminosGrupo1(){return caminosGrupo1;}
 	public ArrayList<Camino> getCaminosGrupo2(){return caminosGrupo2;}
 	
-	public Integer getSimiliaridad(Persona persona1, Persona persona2) {return persona1.calcularSimilaridad(persona2);}
+	public Integer getSimiliaridad(Camino camino) {return camino.getSimilaridad();}
 	
+
 	
 }

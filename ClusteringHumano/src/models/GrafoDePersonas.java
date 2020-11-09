@@ -58,10 +58,10 @@ public class GrafoDePersonas {
 		return this.caminos; 
 	}
 	
-	private int getCantCaminos() {
+	public int getCantCaminos() {
 		return this.cantCaminos;
 	}
-	private int getCantVertices() {
+	public int getCantVertices() {
 		return this.cantVertices;
 	}
 	
