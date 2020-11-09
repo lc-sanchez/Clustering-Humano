@@ -76,6 +76,7 @@ public class Clustering {
 	
 	}
 	
+	//Divide los grupos
 	private void engrupar(ArbolGeneradorMinimo arbolMinimo) {
 		//Setup
 		ArrayList<Camino> caminosArbolMinimo=arbolMinimo.getCaminos();
