@@ -93,8 +93,8 @@ public class VerPersonasView extends JPanel {
 	}
 
 	private String obtenerPeso(Persona persona, Persona persona2) {
-		System.out.println(cluster.getSimiliaridad(persona, persona2));
-		System.out.println(Integer.toString(cluster.getSimiliaridad(persona, persona2)) + "\n");
+//		System.out.println(cluster.getSimiliaridad(persona, persona2));
+//		System.out.println(Integer.toString(cluster.getSimiliaridad(persona, persona2)) + "\n");
 		return Integer.toString(cluster.getSimiliaridad(persona, persona2));
 	}
 
