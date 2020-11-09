@@ -66,7 +66,10 @@ public class Clustering {
 			}
 		}
 		else {
-			grupoPersonas1.add(listaPersonas.get(0));
+			if(cantPersonas>0) {
+				grupoPersonas1.add(listaPersonas.get(0));
+			}
+			
 		}
 	}
 	
@@ -137,7 +140,7 @@ public class Clustering {
 		Persona p1= new Persona("Maria",2,3,5,1);
 		
 		Clustering cluster=new Clustering();
-		cluster.agregarPersona(p1);
+		//cluster.agregarPersona(p1);
 		
 		cluster.ejecutarClustering();
 		

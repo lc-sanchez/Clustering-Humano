@@ -19,9 +19,11 @@ public class ArbolGeneradorMinimo {
 	
 	
 	public ArbolGeneradorMinimo(GrafoDePersonas g) {
-		personas=g.getPersonas(); 
-		caminos=g.getCaminos();
-		caminosMinimos=generarArbolMinimo();
+		if(g.getCaminos().size()>1) {
+			personas=g.getPersonas(); 
+			caminos=g.getCaminos();
+			caminosMinimos=generarArbolMinimo();
+		}
 		
 	}
 	
