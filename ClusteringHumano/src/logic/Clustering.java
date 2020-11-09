@@ -136,16 +136,5 @@ public class Clustering {
 	public ArrayList<Camino> getCaminosGrupo1(){return caminosGrupo1;}
 	public ArrayList<Camino> getCaminosGrupo2(){return caminosGrupo2;}
 	
-	public static void main(String[] args) {
-		Persona p1= new Persona("Maria",2,3,5,1);
-		
-		Clustering cluster=new Clustering();
-		//cluster.agregarPersona(p1);
-		
-		cluster.ejecutarClustering();
-		
-		System.out.println(cluster.getGrupoPersonas1());
-		
-	}
 	
 }
