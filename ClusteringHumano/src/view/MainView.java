@@ -40,11 +40,16 @@ public class MainView extends JFrame {
 		JButton agregarNuevaPersonaBoton = new JButton("Agregar nueva persona");
 		JButton verPersonasBoton = new JButton("Ver personas");
 		JButton verGruposBoton = new JButton("Ver grupos");
+		verGruposBoton.setEnabled(false);
 		JButton armarGruposBoton = new JButton("Armar grupos");
+		armarGruposBoton.setEnabled(false);
 		
 		//Se agrega boton para agregar persona nueva
 		agregarNuevaPersonaBoton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(cluster.getCantPersonas()>=1) {
+					armarGruposBoton.setEnabled(true);
+				}
 				@SuppressWarnings("serial")
 				NuevaPersonaView agregarPersona = new NuevaPersonaView(cluster) {
 					@Override
@@ -103,6 +108,7 @@ public class MainView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//Aca se llamaria al algoritmo del camino minimo
 				cluster.ejecutarClustering();
+				verGruposBoton.setEnabled(true);
 				JOptionPane.showMessageDialog(getFrame(), "Se han armado los grupos satisfactoriamente");
 			}
 		});

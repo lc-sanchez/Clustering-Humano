@@ -59,7 +59,6 @@ public class VerGruposView extends JPanel{
     }
 	
 	private void pintarVertices(Graphics g) {
-
 	    for (int i = 0 ; i < cluster.getCantPersonas() ; i++) {
 	      g.setColor(Color.BLUE);
 	      numRandomX();
