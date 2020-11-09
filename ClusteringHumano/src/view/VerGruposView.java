@@ -83,7 +83,6 @@ public class VerGruposView extends JPanel{
 	}
 
 	private void pintarAristasGrupo1(Graphics g) {
-		g.setColor(Color.RED);
 		String key = "";
 		if(cluster.getCaminosGrupo1().size()!=0) {
 			for (int i = 0 ; i < cluster.getCaminosGrupo1().size(); i++) {
@@ -100,8 +99,11 @@ public class VerGruposView extends JPanel{
 				    	coordenadas.add(e.getValue().get(1));
 				    }
 				}
-				g.drawLine(coordenadas.get(0)+15,coordenadas.get(1)+25, 
-						coordenadas.get(2)+15,coordenadas.get(3)+25);
+				g.setColor(Color.RED);
+				g.drawLine(coordenadas.get(0)+20,coordenadas.get(1)+20, 
+						coordenadas.get(2)+20,coordenadas.get(3)+20);
+				
+				g.setColor(Color.BLACK);
 				g.drawString(Integer.toString(cluster.getCaminosGrupo1().get(i).getSimilaridad()),
 						obtenerCoordenada(coordenadas.get(0),coordenadas.get(2)),
 						obtenerCoordenada(coordenadas.get(1),coordenadas.get(3)));
@@ -133,8 +135,14 @@ public class VerGruposView extends JPanel{
 				    	coordenadas.add(e.getValue().get(1));
 				    }
 				}
+				g.setColor(Color.RED);
 				g.drawLine(coordenadas.get(0)+15,coordenadas.get(1)+25, 
 						coordenadas.get(2)+15,coordenadas.get(3)+25);
+				
+				g.setColor(Color.BLACK);
+				g.drawString(Integer.toString(cluster.getCaminosGrupo2().get(i).getSimilaridad()),
+						obtenerCoordenada(coordenadas.get(0),coordenadas.get(2)),
+						obtenerCoordenada(coordenadas.get(1),coordenadas.get(3)));
 			}
 		}
 		
