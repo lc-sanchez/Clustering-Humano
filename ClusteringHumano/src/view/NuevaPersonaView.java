@@ -102,11 +102,11 @@ public class NuevaPersonaView extends JFrame{
 				else {
 					int interesDeportes = comboBox.getSelectedIndex();
 					
-					int interesMusica = comboBox.getSelectedIndex();
+					int interesMusica = comboBox2.getSelectedIndex();
 					
-					int interesEspectaculo = comboBox.getSelectedIndex();
+					int interesEspectaculo = comboBox3.getSelectedIndex();
 					
-					int interesCiencia = comboBox.getSelectedIndex();	
+					int interesCiencia = comboBox4.getSelectedIndex();	
 					
 					Persona nuevaPersona = new Persona(area, interesDeportes, interesMusica, interesEspectaculo, interesCiencia);
 					cluster.agregarPersona(nuevaPersona);
