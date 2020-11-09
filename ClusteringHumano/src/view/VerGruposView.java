@@ -76,7 +76,6 @@ public class VerGruposView extends JPanel{
 		coordenadas.add(coord1);
 		coordenadas.add(coord2);
 		personas.put(nombre,coordenadas);
-		
 	}
 
 	private String obtenerPersona(int i) {

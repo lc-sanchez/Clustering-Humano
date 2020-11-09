@@ -27,10 +27,8 @@ public class Clustering {
 	public void agregarPersona(Persona persona) {
 		//Para el boton de formulario
 		listaPersonas.add(persona);
-		System.out.println("Lista de Personas-> "+ listaPersonas);
 		cantPersonas++;	
 		grafoDePersonas=new GrafoDePersonas(listaPersonas);
-		
 	}
 	
 	
@@ -135,7 +133,7 @@ public class Clustering {
 	}
 	//-----------------------------Getters y Setters---------------------------------
 	public int getCantPersonas() {return cantPersonas;}
-	public ArrayList<Camino> getCaminosGrafo() {	return grafoDePersonas.getCaminos();}
+	public ArrayList<Camino> getCaminosGrafo() {return grafoDePersonas.getCaminos();}
 	
 	public ArrayList<Persona> getPersonas(){return this.listaPersonas;}
 	
@@ -145,26 +143,5 @@ public class Clustering {
 	public ArrayList<Camino> getCaminosGrupo1(){return caminosGrupo1;}
 	public ArrayList<Camino> getCaminosGrupo2(){return caminosGrupo2;}
 	
-	public Integer getSimiliaridad(Camino camino) {return camino.getSimilaridad();}
-	
-	
-	public static void main(String[] args) {
-		Persona p1= new Persona("Maria",2,3,5,1);
-		Persona p2= new Persona("Juan",2,2,3,4);
-		Persona p3= new Persona("Kia",3,4,2,3);
-		
-		Persona p4= new Persona("R",4,1,1,1);
-		Persona p5= new Persona("J",3,1,1,1); 
-		Clustering cluster=new Clustering();
-		//cluster.agregarPersona(p1);
-		//cluster.agregarPersona(p2);
-		//cluster.agregarPersona(p3);
-		cluster.agregarPersona(p4);
-		System.out.println(cluster.getCaminosGrafo());
-		cluster.agregarPersona(p5);
-		System.out.println(cluster.getCaminosGrafo());
-		//cluster.ejecutarClustering();
-		
-		
-	}
+	public Integer getSimiliaridad(Persona persona1, Persona persona2) {return persona1.calcularSimilaridad(persona2);}
 }
