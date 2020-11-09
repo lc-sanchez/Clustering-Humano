@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import logic.Clustering;
+import models.Persona;
 
 
 public class VerPersonasView extends JPanel {
@@ -75,13 +76,26 @@ public class VerPersonasView extends JPanel {
 		g.setColor(Color.RED);
 		for (int i = 0 ; i < cluster.getCantPersonas()-1; i++) {
 			for(int j = 0 ; j < cluster.getCantPersonas()-1; j++) {
-				g.drawLine(coordenadasXUsadas.get(i)+15,coordenadasYUsadas.get(i)+25, 
-						coordenadasXUsadas.get(j+1)+15,coordenadasYUsadas.get(j+1)+25);
+				g.drawLine(coordenadasXUsadas.get(i)+20,coordenadasYUsadas.get(i)+20, 
+						coordenadasXUsadas.get(j+1)+20,coordenadasYUsadas.get(j+1)+20);
+				g.drawString(obtenerPeso(cluster.listaPersonas.get(i),cluster.listaPersonas.get(j+1)),
+						obtenerCoordenada(coordenadasXUsadas.get(i),coordenadasXUsadas.get(j+1)),
+						obtenerCoordenada(coordenadasYUsadas.get(i),coordenadasYUsadas.get(j+1)));
 			}
 		}
 		
 	}
-	
+
+	private int obtenerCoordenada(Integer integer, Integer integer2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	private String obtenerPeso(Persona persona, Persona persona2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	private void numRandomX() {
 		int num = 0;
 		int i = 0;
