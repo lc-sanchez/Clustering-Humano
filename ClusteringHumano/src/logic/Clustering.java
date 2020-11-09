@@ -42,29 +42,32 @@ public class Clustering {
 		
 		//Generamos el arbol generador minimo utilizando el algoritmo de Prim
 		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
-		
-		//Buscamos la arista mas pesada en el arbol y la guardamos
-		caminoMasPesado=caminoMasPesado(arbolMinimo.getCaminos());
-		
-		if(caminoMasPesado.getSimilaridad()==0) {
-			//Por default se agregan todos al grupo1
-			grupoPersonas1.add(caminoMasPesado.getPersona1());
-			engrupar(arbolMinimo);
+		if(cantPersonas>1) {
+			//Buscamos la arista mas pesada en el arbol y la guardamos
+			caminoMasPesado=caminoMasPesado(arbolMinimo.getCaminos());
+			
+			if(caminoMasPesado.getSimilaridad()==0) {
+				//Por default se agregan todos al grupo1
+				grupoPersonas1.add(caminoMasPesado.getPersona1());
+				engrupar(arbolMinimo);
+			}
+			
+			else {
+				//Sea agregan las personas de los vertices de ese camino a grupos distintos
+				//Es para tener una referencia a los vertices y separar los grupos
+				grupoPersonas1.add(caminoMasPesado.getPersona1());
+				grupoPersonas2.add(caminoMasPesado.getPersona2());
+				
+				//sacamos el camino mas pesado
+				arbolMinimo.eliminarCaminoMasPesado(caminoMasPesado);
+				
+				//Ejecutamos clustering
+				engrupar(arbolMinimo);
+			}
 		}
-		
 		else {
-			//Sea agregan las personas de los vertices de ese camino a grupos distintos
-			//Es para tener una referencia a los vertices y separar los grupos
-			grupoPersonas1.add(caminoMasPesado.getPersona1());
-			grupoPersonas2.add(caminoMasPesado.getPersona2());
-			
-			//sacamos el camino mas pesado
-			arbolMinimo.eliminarCaminoMasPesado(caminoMasPesado);
-			
-			//Ejecutamos clustering
-			engrupar(arbolMinimo);
+			grupoPersonas1.add(listaPersonas.get(0));
 		}
-		
 	}
 	
 	private void engrupar(ArbolGeneradorMinimo arbolMinimo) {
@@ -129,5 +132,17 @@ public class Clustering {
 	
 	public ArrayList<Camino> getCaminosGrupo1(){return caminosGrupo1;}
 	public ArrayList<Camino> getCaminosGrupo2(){return caminosGrupo2;}
+	
+	public static void main(String[] args) {
+		Persona p1= new Persona("Maria",2,3,5,1);
+		
+		Clustering cluster=new Clustering();
+		cluster.agregarPersona(p1);
+		
+		cluster.ejecutarClustering();
+		
+		System.out.println(cluster.getGrupoPersonas1());
+		
+	}
 	
 }
