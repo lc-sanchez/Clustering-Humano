@@ -33,7 +33,7 @@ public class VerGruposView extends JPanel{
 		//Se establecen las caracteristicas de la ventana verGrupos
 		frame = new JFrame("Ver Grupos");
         frame.getContentPane().add(new VerGruposView(cluster));
-        frame.setSize(800, 800);
+        frame.setSize(1000, 700);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
@@ -41,7 +41,7 @@ public class VerGruposView extends JPanel{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JButton btnVolver = new JButton("Volver");
-		btnVolver.setBounds(350, 720, 80, 20);
+		btnVolver.setBounds(450, 630, 80, 20);
 		frame.getContentPane().add(btnVolver);
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,26 +60,26 @@ public class VerGruposView extends JPanel{
     }
 	
 	private void pintarVertices(Graphics g) {
-	    for (int i = 0 ; i < cluster.getCantPersonas() ; i++) {
-	      g.setColor(Color.BLUE);
-	      numRandomX();
-	      numRandomY();
-	      g.fillOval(coordenadasXUsadas.get(i), coordenadasYUsadas.get(i), 40, 40);
-	      g.setColor(Color.BLACK);
-	      g.drawString(obtenerPersona(i), coordenadasXUsadas.get(i)+15, coordenadasYUsadas.get(i)-5);
-	      agregarPersona(obtenerPersona(i),coordenadasXUsadas.get(i), coordenadasYUsadas.get(i));
-	    }
-	  }
+		for (int i = 0 ; i < cluster.getCantPersonas() ; i++) {
+			g.setColor(Color.BLUE);
+			numRandomX();
+			numRandomY();
+			g.fillOval(coordenadasXUsadas.get(i), coordenadasYUsadas.get(i), 40, 40);
+			g.setColor(Color.BLACK);
+			g.drawString(obtenerPersona(i), coordenadasXUsadas.get(i)+15, coordenadasYUsadas.get(i)-5);
+			agregarPersona(obtenerPersona(i),coordenadasXUsadas.get(i), coordenadasYUsadas.get(i));
+		}
+	}
+	
+	private String obtenerPersona(int i) {
+		return cluster.listaPersonas.get(i).getNombre();
+	}
 	
 	private void agregarPersona(String nombre, Integer coord1, Integer coord2) {
 		ArrayList<Integer> coordenadas = new ArrayList<Integer>();
 		coordenadas.add(coord1);
 		coordenadas.add(coord2);
 		personas.put(nombre,coordenadas);
-	}
-
-	private String obtenerPersona(int i) {
-		return cluster.listaPersonas.get(i).getNombre();
 	}
 
 	private void pintarAristasGrupo1(Graphics g) {
@@ -112,11 +112,6 @@ public class VerGruposView extends JPanel{
 		
 	}
 	
-	private int obtenerCoordenada(Integer integer, Integer integer2) {
-		int ret = ((integer+integer2)/2)+20;
-		return ret;
-	}
-	
 	private void pintarAristasGrupo2(Graphics g) {
 		g.setColor(Color.RED);
 		String key = "";
@@ -144,15 +139,19 @@ public class VerGruposView extends JPanel{
 						obtenerCoordenada(coordenadas.get(0),coordenadas.get(2)),
 						obtenerCoordenada(coordenadas.get(1),coordenadas.get(3)));
 			}
-		}
-		
+		}	
+	}
+	
+	private int obtenerCoordenada(Integer integer, Integer integer2) {
+		int ret = ((integer+integer2)/2)+20;
+		return ret;
 	}
 	
 	private void numRandomX() {
 		int num = 0;
 		int i = 0;
 		while(i==0) {
-		num = (int) (Math.random() * (700 - 100) + 100);
+		num = (int) (Math.random() * (900 - 100) + 100);
 		if(!estaEnCoordenadasX(num)) {
 			coordenadasXUsadas.add(num);
 			i=1;
@@ -174,6 +173,18 @@ public class VerGruposView extends JPanel{
 		}
 	}
 	
+	private void numRandomY() {
+		int num = 0;
+		int i = 0;
+		while(i==0) {
+			num = (int) (Math.random() * (600 - 100) + 100);
+			if(!estaEnCoordenadasY(num)) {
+				coordenadasYUsadas.add(num);
+				i=1;
+			}
+		}
+	}
+	
 	private boolean estaEnCoordenadasY(int num) {
 		if(coordenadasYUsadas.size()==0) {
 			return false;
@@ -185,18 +196,6 @@ public class VerGruposView extends JPanel{
 				}
 			}
 			return false;
-		}
-	}
-	
-	private void numRandomY() {
-		int num = 0;
-		int i = 0;
-		while(i==0) {
-			num = (int) (Math.random() * (700 - 100) + 100);
-			if(!estaEnCoordenadasY(num)) {
-				coordenadasYUsadas.add(num);
-				i=1;
-			}
 		}
 	}
 

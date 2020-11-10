@@ -32,7 +32,7 @@ public class VerPersonasView extends JPanel {
 		//Se establecen las caracteristicas de la ventana verPersonas
 		frame = new JFrame("Ver Personas");
         frame.getContentPane().add(new VerPersonasView(cluster));
-        frame.setSize(800, 800);
+        frame.setSize(1000, 700);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
@@ -40,7 +40,7 @@ public class VerPersonasView extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JButton btnVolver = new JButton("Volver");
-		btnVolver.setBounds(350, 720, 80, 20);
+		btnVolver.setBounds(450, 630, 80, 20);
 		frame.getContentPane().add(btnVolver);
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -103,7 +103,7 @@ public class VerPersonasView extends JPanel {
 		int num = 0;
 		int i = 0;
 		while(i==0) {
-		num = (int) (Math.random() * (700 - 100) + 100);
+		num = (int) (Math.random() * (900 - 100) + 100);
 		if(!estaEnCoordenadasX(num)) {
 			coordenadasXUsadas.add(num);
 			i=1;
@@ -143,7 +143,7 @@ public class VerPersonasView extends JPanel {
 		int num = 0;
 		int i = 0;
 		while(i==0) {
-			num = (int) (Math.random() * (700 - 100) + 100);
+			num = (int) (Math.random() * (600 - 100) + 100);
 			if(!estaEnCoordenadasY(num)) {
 				coordenadasYUsadas.add(num);
 				i=1;
