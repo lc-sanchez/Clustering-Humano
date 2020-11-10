@@ -32,6 +32,7 @@ public class VerPersonasView extends JPanel {
 		//Se establecen las caracteristicas de la ventana verPersonas
 		frame = new JFrame("Ver Personas");
         frame.getContentPane().add(new VerPersonasView(cluster));
+        //A ver ahora
         frame.setSize(1000, 700);
         frame.setResizable(false);
         frame.setVisible(true);
