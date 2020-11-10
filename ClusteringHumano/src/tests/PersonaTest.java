@@ -14,7 +14,7 @@ public class PersonaTest {
 	}
 
 	@Test 
-	public void equalsTest2() {
+	public void InteresesDistintosTest() {
 		Persona p1= new Persona("Maria",2,3,4,5);
 		Persona p2= new Persona("Kia",1,2,3,4);
 		assertFalse(p1.equals(p2));

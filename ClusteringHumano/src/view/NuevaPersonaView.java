@@ -22,6 +22,7 @@ public class NuevaPersonaView extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	public Clustering cluster;
+	private String[] intereses = {"1","2","3","4","5"};
 	
 	public NuevaPersonaView(Clustering cluster) {
 		//Se establecen las caracteristicas de la ventana agregarPersona
@@ -70,26 +71,22 @@ public class NuevaPersonaView extends JFrame{
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(120 , 110, 235, 33);
-		comboBox.setModel(new DefaultComboBoxModel(new String[]
-		{"1", "2", "3", "4", "5"}));
+		comboBox.setModel(new DefaultComboBoxModel(intereses));
 		this.getContentPane().add(comboBox);
 		
 		JComboBox comboBox2 = new JComboBox();
 		comboBox2.setBounds(120 , 180, 235, 33);
-		comboBox2.setModel(new DefaultComboBoxModel(new String[]
-		{"1", "2", "3", "4", "5"}));
+		comboBox2.setModel(new DefaultComboBoxModel(intereses));
 		this.getContentPane().add(comboBox2);
 		
 		JComboBox comboBox3 = new JComboBox();
 		comboBox3.setBounds(120 , 250, 235, 33);
-		comboBox3.setModel(new DefaultComboBoxModel(new String[]
-		{"1", "2", "3", "4", "5"}));
+		comboBox3.setModel(new DefaultComboBoxModel(intereses));
 		this.getContentPane().add(comboBox3);
 		
 		JComboBox comboBox4 = new JComboBox();
 		comboBox4.setBounds(120 , 320, 235, 33);
-		comboBox4.setModel(new DefaultComboBoxModel(new String[]
-		{"1", "2", "3", "4", "5"}));
+		comboBox4.setModel(new DefaultComboBoxModel(intereses));
 		this.getContentPane().add(comboBox4);
 		
 		//Se agrega boton para enviar y volver

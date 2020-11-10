@@ -99,7 +99,7 @@ public class VerGruposView extends JPanel{
 				    	coordenadas.add(e.getValue().get(1));
 				    }
 				}
-				g.setColor(Color.RED);
+				g.setColor(Color.GREEN);
 				g.drawLine(coordenadas.get(0)+20,coordenadas.get(1)+20, 
 						coordenadas.get(2)+20,coordenadas.get(3)+20);
 				
