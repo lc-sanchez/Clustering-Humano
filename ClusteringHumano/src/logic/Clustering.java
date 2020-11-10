@@ -13,7 +13,8 @@ public class Clustering {
 	
 	private int cantPersonas;
 	private Camino caminoMasPesado;
-
+ 
+	//Variables para separar los grupos
 	private ArrayList<Persona> grupoPersonas1;
 	private ArrayList<Persona> grupoPersonas2;
 	private ArrayList<Camino> caminosGrupo1;
@@ -28,6 +29,7 @@ public class Clustering {
 		//Para el boton de formulario
 		listaPersonas.add(persona);
 		cantPersonas++;	
+		//Se crea un grafo cada vez que se agrega una persona
 		grafoDePersonas=new GrafoDePersonas(listaPersonas);
 	}
 	
@@ -38,14 +40,9 @@ public class Clustering {
 		grupoPersonas2=new ArrayList<Persona>();
 		caminosGrupo1= new ArrayList<Camino>();
 		caminosGrupo2=new ArrayList<Camino>();
-		
-		//Generamos el grafo a partir de la lista de personas
-		GrafoDePersonas grafo= new GrafoDePersonas(listaPersonas);
-		
-		
-		
+	
 		//Generamos el arbol generador minimo utilizando el algoritmo de Prim
-		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafo);
+		ArbolGeneradorMinimo arbolMinimo= new ArbolGeneradorMinimo(grafoDePersonas);
 		
 		if(cantPersonas>1) {
 			//Buscamos la arista mas pesada en el arbol y la guardamos
@@ -79,6 +76,7 @@ public class Clustering {
 	
 	}
 	
+	//Divide los grupos
 	private void engrupar(ArbolGeneradorMinimo arbolMinimo) {
 		//Setup
 		ArrayList<Camino> caminosArbolMinimo=arbolMinimo.getCaminos();
