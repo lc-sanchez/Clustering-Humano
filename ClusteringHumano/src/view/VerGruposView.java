@@ -60,19 +60,25 @@ public class VerGruposView extends JPanel{
     }
 	
 	private void pintarVertices(Graphics g) {
-		for (int i = 0 ; i < cluster.getCantPersonas() ; i++) {
+		int i = 0;
+		for (i = 0 ; i < cluster.getGrupoPersonas1().size() ; i++) {
 			g.setColor(Color.BLUE);
 			numRandomX();
 			numRandomY();
+			agregarPersona(cluster.getGrupoPersonas1().get(i).getNombre(),coordenadasXUsadas.get(i), coordenadasYUsadas.get(i));
 			g.fillOval(coordenadasXUsadas.get(i), coordenadasYUsadas.get(i), 40, 40);
 			g.setColor(Color.BLACK);
-			g.drawString(obtenerPersona(i), coordenadasXUsadas.get(i)+15, coordenadasYUsadas.get(i)-5);
-			agregarPersona(obtenerPersona(i),coordenadasXUsadas.get(i), coordenadasYUsadas.get(i));
+			g.drawString(cluster.getGrupoPersonas1().get(i).getNombre(), coordenadasXUsadas.get(i)+15, coordenadasYUsadas.get(i)-5);
 		}
-	}
-	
-	private String obtenerPersona(int i) {
-		return cluster.listaPersonas.get(i).getNombre();
+		for (int j = 0 ; j < cluster.getGrupoPersonas2().size() ; j++) {
+			g.setColor(Color.RED);
+			numRandomX();
+			numRandomY();
+			agregarPersona(cluster.getGrupoPersonas2().get(j).getNombre(),coordenadasXUsadas.get(j+i), coordenadasYUsadas.get(j+i));
+			g.fillOval(coordenadasXUsadas.get(j+i), coordenadasYUsadas.get(j+i), 40, 40);
+			g.setColor(Color.BLACK);
+			g.drawString(cluster.getGrupoPersonas2().get(j).getNombre(), coordenadasXUsadas.get(j+i)+15, coordenadasYUsadas.get(j+i)-5);
+		}
 	}
 	
 	private void agregarPersona(String nombre, Integer coord1, Integer coord2) {
@@ -99,7 +105,7 @@ public class VerGruposView extends JPanel{
 				    	coordenadas.add(e.getValue().get(1));
 				    }
 				}
-				g.setColor(Color.GREEN);
+				g.setColor(Color.RED);
 				g.drawLine(coordenadas.get(0)+20,coordenadas.get(1)+20, 
 						coordenadas.get(2)+20,coordenadas.get(3)+20);
 				
@@ -130,7 +136,7 @@ public class VerGruposView extends JPanel{
 				    	coordenadas.add(e.getValue().get(1));
 				    }
 				}
-				g.setColor(Color.RED);
+				g.setColor(Color.GREEN);
 				g.drawLine(coordenadas.get(0)+15,coordenadas.get(1)+25, 
 						coordenadas.get(2)+15,coordenadas.get(3)+25);
 				
