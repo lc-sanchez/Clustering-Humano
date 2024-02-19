@@ -23,4 +23,4 @@ Este valor es cero cuando _i_ y_j_ tienen exactamente los mismos valores de inte
 La aplicación implementada cuenta con una interfaz para cargar y visualizar los datos de las personas, y una interfaz para ver los grupos que se formaron luego del algoritmo anterior. Además, se cuenta con un botón para lanzar
 la ejecución del algoritmo.
 
-Informe [aquí](https://docs.google.com/document/d/1WLRKWEJa_3ZvKcmxrhayv_CS7G2Juuxm/edit?usp=sharing&rtpof=true&sd=true)
+Informe [aquí](https://drive.google.com/file/d/1t36wC_ByQkWC6EnW5pnvRZxk5XfRcjxD/view?usp=drive_link)
